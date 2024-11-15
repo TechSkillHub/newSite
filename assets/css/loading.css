@@ -1,0 +1,44 @@
+.loader_mask {
+  @apply fixed top-0 left-0 right-0 bottom-0;
+  @apply bg-black bg-opacity-50 backdrop-blur-sm z-40;
+}
+.loader_wrapper {
+  @apply absolute w-full h-screen ;
+  @apply flex justify-center items-center;
+}
+.loader {
+  @apply relative w-12 h-12 block m-auto z-50;
+  @apply text-white;
+  @apply box-border;
+  animation: rotation 1s linear infinite;
+}
+.loader::after,
+.loader::before {
+  content: '';
+  @apply box-border absolute w-6 h-6 top-0;
+  @apply bg-white rounded-full;
+  animation: scale50 1s infinite ease-in-out;
+}
+.loader::before {
+  @apply top-auto bottom-0 bg-primaryLight;
+  animation-delay: 0.5s;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale50 {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

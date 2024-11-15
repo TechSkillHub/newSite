@@ -1,0 +1,15 @@
+.tooltip {
+  @apply relative;
+}
+
+.tooltip .tooltiptext { 
+  @apply absolute w-fit right-0 bottom-full rounded-md mb-2;
+  @apply bg-red-200 text-red-500 border border-red-500;
+  @apply text-sm px-3 py-0;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  @apply absolute top-full right-4;
+  @apply border-transparent border-t-red-500 border-[6px];
+}

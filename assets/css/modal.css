@@ -1,0 +1,25 @@
+.modal_mask {
+  @apply fixed top-0 left-0 right-0 bottom-0;
+  @apply bg-black bg-opacity-50 backdrop-blur-sm z-40;
+}
+.modal_wrapper {
+  @apply absolute w-full h-screen ;
+  @apply flex justify-center items-center;
+}
+.modal_close {
+  @apply bg-white cursor-pointer absolute -top-8 right-0;
+}
+.modal_content {
+  @apply bg-white relative w-full max-w-[550px];
+  @apply transition-transform ease-in-out duration-300 scale-0;
+  @apply p-8 rounded-md z-50;
+}
+.modal_header {
+  @apply text-2xl font-bold pb-4;
+}
+.modal_body {
+  @apply py-8 border-b-2 border-t-2;
+}
+.modal_footer {
+  @apply flex justify-around gap-8 pt-8;
+}

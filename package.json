@@ -1,0 +1,45 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.5",
+    "@prisma/client": "^5.20.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "clsx": "^2.1.1",
+    "google-ads-api": "^17.1.0-rest-beta",
+    "googleapis": "^144.0.0",
+    "h3": "^1.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "mailersend": "^2.3.0",
+    "nuxt": "^3.13.0",
+    "pinia": "^2.2.4",
+    "pinia-plugin-persistedstate": "^4.1.1",
+    "vee-validate": "^4.14.4",
+    "vue": "^3.5.11",
+    "vue-router": "^4.4.5",
+    "vue-select": "^4.0.0-beta.6",
+    "vue3-autocounter": "^1.0.8"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/vue-select": "^3.16.8",
+    "autoprefixer": "^10.4.20",
+    "nuxt-icon": "^1.0.0-beta.7",
+    "postcss": "^8.4.47",
+    "prisma": "^5.20.0",
+    "sass-embedded": "^1.80.5",
+    "tailwindcss": "^3.4.13"
+  }
+}

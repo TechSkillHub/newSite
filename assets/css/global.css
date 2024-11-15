@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Audiowide";
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  font-display: swap;
+}
+
+body {
+  background-color: var(--color-darkTheme)
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  .btn {
+    @apply flex justify-center items-center;
+    @apply gap-2 rounded-md px-6 py-2;
+    @apply text-sm font-semibold;
+    @apply bg-primary text-white;
+    @apply transition-all ease-in-out duration-500;
+  }
+  .btn:hover {
+    @apply brightness-125;
+  }
+  .btn-outlined {
+    @apply bg-white text-darkTheme border-2 border-primary;
+  }
+  .btn-outlined:hover {
+    @apply text-primary;
+  }
+  .btn-disabled {
+    @apply opacity-50 cursor-default;
+  }
+}
+
+:root {
+  --color-primary: #008b8b;
+  --color-primaryLight: #00bebe;
+  --color-secondary: #46008b;
+  --color-secondaryLight: #8000ff;
+  --color-offWhite: #f3f3f3;
+  --color-grayTheme: #c7c9c8;
+  --color-darkTheme: #212529;
+
+  --color-success: #009b4e;
+  --color-warning: #f09924;
+  --color-error: #ff0000;
+  
+  --color-bg-header: var(--color-darkTheme);
+  --color-text-header: var(--color-offWhite);
+  --color-bg-footer: var(--color-darkTheme);
+  --color-text-footer: var(--color-offWhite);
+  --color-bg-button: var(--color-primary);
+  --color-text-button: var(--color-offWhite);
+
+  --height-header: 90px;
+}
