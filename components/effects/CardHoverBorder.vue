@@ -1,17 +1,18 @@
 <template>
   <div
     ref="wrapper"
-    class="wrapper"
-    style="--x: 0px; --y: 0px"
+    class="wrapper grow"
   >
-    <div class="bg-gray-700 rounded-xl p-3 h-full">
+    <div class="bg-gray-700 rounded-xl p-6 h-full">
       <slot/>
     </div>
   </div>
 </template>
 
 <script setup>
-if(process.client) {
+
+const hover =() =>{
+
   const wrapper = document.querySelectorAll('.wrapper');
       
   for (let i = 0; i < wrapper.length; i++) {
@@ -26,13 +27,17 @@ if(process.client) {
       
     }, false)
   }
-}
+} 
+
+onMounted(() => {
+  hover();
+});
 
 </script>
 
 <style scoped>
 .wrapper {
-  @apply relative z-10 rounded-xl overflow-hidden p-[4px] transition-colors duration-300 w-full h-80;
+  @apply relative z-10 rounded-xl overflow-hidden p-[4px] transition-colors duration-300 min-h-80 md:w-1/4;
 }
 .wrapper:before {
   background: radial-gradient(

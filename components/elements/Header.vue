@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed w-full p-6 bg-header text-header h-header flex shadow-md z-30 transition-all ease-in-out duration-500" :class="scrollY > 90 ? '!bg-[#008b8b] !bg-opacity-40 backdrop-blur-sm' : ''">
+  <nav class="fixed w-full p-6 bg-header text-header h-header flex shadow-md z-30 transition-all ease-in-out duration-500" :class="scrollY > 90 ? '!bg-gray-700 !bg-opacity-40 backdrop-blur-sm' : ''">
     <div class="flex items-center justify-between max-w-screen-xl mx-auto w-full">
       <!-- Header logo -->
       <div class="">
@@ -21,7 +21,7 @@
               {{ item.title }}
             </NuxtLink>
           </li>
-          <ClientOnly>
+          <!-- <ClientOnly>
             <li class="h-12 w-px bg-grayTheme"></li>
             <li v-if="authStore.isLoggedIn">
               <NuxtLink to="/dashboard">
@@ -33,7 +33,7 @@
                 {{ !authStore.isLoggedIn ? 'Área do cliente' : 'Logout' }}
               </FieldButton>
             </li>          
-          </ClientOnly>
+          </ClientOnly> -->
         </ul>
       </div>
 
@@ -71,13 +71,13 @@
             </NuxtLink>
           </li>
 
-          <ClientOnly>
+          <!-- <ClientOnly>
             <li>
               <FieldButton :outlined="authStore.isLoggedIn" @click="onSubmit" fullWidth class="my-8">
                 {{ !authStore.isLoggedIn ? 'Área do cliente' : 'Logout' }}
               </FieldButton>
             </li>
-          </ClientOnly>
+          </ClientOnly> -->
         </ul>
 
         <div class="follow">

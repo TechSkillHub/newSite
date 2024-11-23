@@ -2,10 +2,10 @@
   <div>
     <SectionHero/>
     <SectionProblemCases/>
-    <SectionDevelopment/>
-    <SectionExpertises/>
     <SectionServices/>
-    <!-- <SectionWhoUs/> -->
+    <SectionExpertises/>
+    <!-- <SectionPrices/> -->
+    <SectionWhoUs/>
   </div>
 </template>
 

@@ -10,7 +10,7 @@
 import { generateMeta } from '@/utils/constants/generateMeta';
 
 useHead({
-  title: 'Title of Website',
+  title: 'Tech Skill Hub - A sua revolução digital!',
   meta: generateMeta(),
   htmlAttrs: {
     lang: 'pt-BR',

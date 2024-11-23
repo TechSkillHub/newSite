@@ -1,15 +1,13 @@
 <template>
   <button
     :type="type"
-    :disabled="disabled"
+    :disabled="computedDisabled"
     :class="
       clsx(
-        'btn focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ',
-        type != 'submit' || isInactive && 'btn-disabled',
-        disabled && 'btn-disabled',
+        'btn focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+        computedDisabled && 'btn-disabled',
         fullWidth && 'w-full',
         outlined && 'btn-outlined',
-        danger && '',
       )
     "
   >
@@ -20,24 +18,39 @@
 
 <script setup lang="ts">
 import { useIsFormDirty, useIsFormValid } from "vee-validate";
+import clsx from "clsx";
+import { computed } from "vue";
 
-import clsx from 'clsx';
+const props = withDefaults(
+  defineProps<{
+    type?: "button" | "submit" | "reset";
+    fullWidth?: boolean;
+    outlined?: boolean;
+    danger?: boolean;
+    disabled?: boolean;
+  }>(),
+  {
+    type: "button",
+  }
+);
 
-const isDirty = useIsFormDirty();
-const isValid = useIsFormValid();
-  
+// Reatividade para verificar se o formulário está válido e alterado
+const isDirty = computed(() => (props.type === "submit" ? useIsFormDirty().value : true));
+const isValid = computed(() => (props.type === "submit" ? useIsFormValid().value : true));
+
+// Verifica se o botão está inativo
 const isInactive = computed(() => {
-  return !isDirty.value || !isValid.value;
+  if (props.type === "submit") {
+    // Apenas aplica lógica de formulário se o botão for do tipo submit
+    return !isDirty.value || !isValid.value;
+  }
+  return false; // Botões de outros tipos não consideram o estado do formulário
 });
 
-interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  fullWidth?: boolean;
-  outlined?: boolean;
-  danger?: boolean;
-  disabled?: boolean;
-}
-const props = defineProps<ButtonProps>();
+// Calcula se o botão deve estar desabilitado
+const computedDisabled = computed(() => {
+  return props.disabled || isInactive.value;
+});
 </script>
 
 <style scoped></style>

@@ -39,7 +39,7 @@
       :disabled="isSubmitting" 
       type="password"
       :has-error="!!errors.password" 
-      :rules="variant === 'LOGIN' ? '' : 'required|password'"
+      :rules="variant === 'LOGIN' ? 'required' : 'required|password'"
     />
 
     <small

@@ -13,34 +13,31 @@
 
       <div class="md:w-[46%] flex flex-col justify-between h-full">
         <p class="text-justify text-grayTheme">
-          A revolução digital não é apenas sobre estar online é sobre transformar a maneira como você conecta seu público, otimiza operações e gera resultados mensuráveis. No cenário digital de hoje, as oportunidades são infinitas, e cada passo certo gera retornos reais e palpáveis. Imagine contar com processos ágeis, ferramentas poderosas e estratégias personalizadas que tornam o crescimento previsível, escalável e financeiramente sustentável. Estamos aqui para transformar esse potencial em realidade para você, um passo de cada vez, com as soluções que sua empresa precisa para atingir o próximo nível.
+          {{ hero.text }}
         </p>
         <div class="flex flex-col gap-2 md:items-end mt-8">
-          <div class="text-white uppercase rounded-full px-2 py-2 bg-gray-700 md:w-2/3 flex items-center gap-2 leading-none">
+          <div 
+            v-for="(item, index) in hero.items" :key="index"
+            class="text-white uppercase rounded-full px-2 py-2 bg-gray-700 md:w-2/3 flex items-center gap-2 leading-none">
             <Icon name="material-symbols:check-circle" size="24" class="text-primary" />
-            <span class="mt-[2px]">Domínio grátis</span>
+            <span class="mt-[2px]">{{ item }}</span>
           </div>
-          <div class="text-white uppercase rounded-full px-2 py-2 bg-gray-700 md:w-2/3 flex items-center gap-2 leading-none">
-            <Icon name="material-symbols:check-circle" size="24" class="text-primary" />
-            <span class="mt-[2px]">Migração de Site Gratuito</span>
-          </div>
-          <div class="text-white uppercase rounded-full px-2 py-2 bg-gray-700 md:w-2/3 flex items-center gap-2 leading-none">
-            <Icon name="material-symbols:check-circle" size="24" class="text-primary" />
-            <span class="mt-[2px]">Atendimento personalizado</span>
-          </div>
-          <ClientOnly>
-            <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4">
-              Explore a Mudança
-              <Icon name="material-symbols:arrow-insert" size="24" class="-scale-x-100" />
-            </FieldButton>
-          </ClientOnly>
+          
+          <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4 md:text-xl text-lg">
+            <span class="w-11/12">{{ hero.cta }}</span>
+            <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
+          </FieldButton>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useContent } from '@/composables/useContent'
+
+const content = await useContent()
+const hero = content.hero
 
 </script>
 

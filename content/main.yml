@@ -1,0 +1,36 @@
+hero: {
+  text: 'A revolução digital não é apenas sobre estar online é sobre transformar a maneira como você conecta seu público, otimiza operações e gera resultados mensuráveis. No cenário digital de hoje, as oportunidades são infinitas, e cada passo certo gera retornos reais e palpáveis. Imagine contar com processos ágeis, ferramentas poderosas e estratégias personalizadas que tornam o crescimento previsível, escalável e financeiramente sustentável. Estamos aqui para transformar esse potencial em realidade para você, um passo de cada vez, com as soluções que sua empresa precisa para atingir o próximo nível.',
+  items: [
+    'Domínio grátis',
+    'Migração de Site Gratuito',
+    'Atendimento personalizado'
+  ],
+  cta: 'Explore a Mudança'
+}
+
+problems: {
+  title: 'Já teve algum desses problemas?',
+  subtitle: 'Nós solucionamos para você!',
+  line1: [
+    { title: '', description: 'Falta de Estratégia e Direcionamento Claro'},
+    { title: '', description: 'Foco Excessivo em Vendas'},
+    { title: '', description: 'Dificuldade em Conhecer o Público-Alvo'},
+    { title: '', description: 'Desafios em Medir Resultados'},
+  ],
+  line2: [
+    { title: '', description: 'Dificuldade em Acompanhar as Tendências'},
+    { title: '', description: 'Orçamento Limitado'},
+    { title: '', description: 'Inconstância nas Publicações de Conteúdo'},
+    { title: '', description: 'Concorrência Intensa'},
+    { title: '', description: 'Desalinhamento entre Marketing e Vendas'},
+  ],
+  cta: 'Quer saber como resolver esses problemas'
+}
+
+services: [
+  { title: 'SEO', description: 'Seu site mais rapido, e no topo das pesquisas do google, esteja na frente de seus concorrentes.', img: 'images/services/imgSeo.png', cta: ''},
+  { title: 'Marketing digital', description: 'já teve dificuldade em entender o público do seu negócio, saber como se posicionar nas redes sociais, saber como estruturas suas campanhas ou entender suas métrica.', img: '', cta: 'Saiba mais'},
+  { title: 'UX/UI', description: 'Faça que seus clientes e colabores se sintam mais envolvidos com seus sonhos e ideais.', img: 'images/services/imgUx.png', cta: ''},
+  { title: 'Densenvolvimento', description: 'Te ajudamos a Ter um site profissional feito por especialistas. tire do papel sua ideias de software que mudaram o rumo do seu négocio.', img: 'images/services/imgDev.png', cta: ''},
+  { title: 'Trafego Pago', description: 'Apresente seus serviços para mais pessoas todos os dias, utlizando o melhor que o google ads e facebook ads pode te oferecer.', img: 'images/services/imgAds.png', cta: ''},
+]

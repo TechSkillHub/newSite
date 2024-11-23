@@ -7,9 +7,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
+    "@nuxt/content": "^2.13.4",
     "@pinia/nuxt": "^0.5.5",
     "@prisma/client": "^5.20.0",
     "axios": "^1.7.7",
@@ -30,16 +32,25 @@
     "vue3-autocounter": "^1.0.8"
   },
   "devDependencies": {
+    "@iconify-json/fa6-brands": "^1.2.3",
+    "@iconify-json/fluent": "^1.2.7",
+    "@iconify-json/logos": "^1.2.3",
+    "@iconify-json/material-symbols": "^1.2.8",
+    "@iconify-json/mdi": "^1.2.1",
+    "@iconify-json/ri": "^1.2.3",
+    "@iconify-json/svg-spinners": "^1.2.1",
+    "@nuxt/icon": "^1.8.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/vue-select": "^3.16.8",
+    "@types/vue-select": "^2.5.0",
     "autoprefixer": "^10.4.20",
     "nuxt-icon": "^1.0.0-beta.7",
     "postcss": "^8.4.47",
     "prisma": "^5.20.0",
     "sass-embedded": "^1.80.5",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.13",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
