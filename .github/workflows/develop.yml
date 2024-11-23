@@ -22,14 +22,12 @@ jobs:
 
       - name: Build React App / Vue App (depending on user app) 🏗️
         run: npm run generate
-
-      - name: Enter dist 🏗️
-        run: cd .output/public
-
+        
       - name: Upload to cPanel 📂
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: site-institucional/
+          local-dir: .output/public
+          server-dir: lp-sites/
