@@ -40,6 +40,9 @@ export default {
         'sans': ['Montserrat'],
       },
     },
+    backgroundImage: {
+      'whats': "url('/assets/images/bgWhats.jpg')"
+    },
   },
   plugins: [],
 }

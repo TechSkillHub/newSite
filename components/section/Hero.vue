@@ -4,7 +4,7 @@
       <div class="md:w-1/2 h-full">
         <h1 class="md:text-8xl text-5xl text-center md:text-left font-bold uppercase text-white">
           Sua<br/>
-          <EffectsWriter :array="['Revolução', 'Presença', 'Solução']" caret="cursor"/>
+          <EffectsWriter :array="['Revolução', 'Presença', 'Solução']" caret="cursor" class=""/>
           Digital<br/>
           Começa<br/>
           Aqui<span class="text-primary">.</span>
@@ -23,7 +23,7 @@
             <span class="mt-[2px]">{{ item }}</span>
           </div>
           
-          <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4 md:text-xl text-lg">
+          <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4" @click="sendMsg">
             <span class="w-11/12">{{ hero.cta }}</span>
             <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
           </FieldButton>
@@ -34,10 +34,15 @@
 </template>
 
 <script setup lang="ts">
+import { whatsApp } from '~/utils/datas/whatsapp.data'
 import { useContent } from '@/composables/useContent'
 
 const content = await useContent()
 const hero = content.hero
+
+const sendMsg = () => {
+  window.open(`${whatsApp}?text=${encodeURIComponent('Quero explorar a mudança digital!')}`, '_blank')
+}
 
 </script>
 

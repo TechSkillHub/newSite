@@ -1,6 +1,6 @@
 <template>
-  <nav class="fixed w-full p-6 bg-header text-header h-header flex shadow-md z-30 transition-all ease-in-out duration-500" :class="scrollY > 90 ? '!bg-gray-700 !bg-opacity-40 backdrop-blur-sm' : ''">
-    <div class="flex items-center justify-between max-w-screen-xl mx-auto w-full">
+  <nav class="fixed w-full p-2 bg-header text-header h-header flex shadow-md z-30 transition-all ease-in-out duration-500" :class="scrollY > 90 ? '!bg-gray-700 !bg-opacity-40 backdrop-blur-sm' : ''">
+    <div class="flex items-center justify-between container mx-auto w-full">
       <!-- Header logo -->
       <div class="">
         <LogosBrand/>
@@ -52,7 +52,7 @@
       </transition>
 
       <!-- Drawer Menu -->
-      <aside class="p-5 pt-20 transform top-0 -left-[1px] w-9/12 bg-white text-darkTheme fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30" :class="isOpen ? 'translate-x-0' : '-translate-x-full'">
+      <aside class="p-5 pt-20 transform top-0 -left-[1px] w-9/12 bg-white text-darkTheme fixed h-screen overflow-auto ease-in-out transition-all duration-300 z-30" :class="isOpen ? 'translate-x-0' : '-translate-x-full'">
         
         <div class="close">
           <button class="absolute top-0 right-0 mt-4 mr-4" @click=" isOpen = false" aria-label="Close">
@@ -81,7 +81,7 @@
         </ul>
 
         <div class="follow">
-          <p class="italic font-sans text-sm">follow us:</p>
+          <p class="italic font-sans text-sm">Siga-nos:</p>
           <div class="social flex space-x-5 mt-4 ">
             <IconsSocialIcon v-for="(item, index) in socialLinks" :key="index" :icon="item.icon" :url="item.url" />
           </div>

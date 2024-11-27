@@ -32,14 +32,14 @@ import { Field, ErrorMessage } from 'vee-validate';
 import clsx from 'clsx';
 
 interface InputProps {
-  label: string;
+  label?: string;
   id: string;
-  modelValue: string | number;
+  modelValue?: string | number;
   name: string;
   type?: string;
   required?: boolean;
   disabled?: boolean; 
-  hasError: boolean;
+  hasError?: boolean;
   rules?: string
 }
 
