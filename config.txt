@@ -1,0 +1,27 @@
+Sammy lhe dá as boas-vindas ao seu Droplet!
+
+Coisas para fazer com este script
+Esta mensagem está chegando a você por meio de um aplicativo NodeJS simples que está ativo no seu Droplet! Este droplet está todo configurado com NodeJS, PM2 para gerenciamento de processos e nginx.
+
+Execute todos os comandos pm2 usando o usuário nodejs ou uma segunda instância do pm2 será iniciada. O login e a senha são armazenados nos NODE_USER*valores que você vê quando chama cat /root/.digitalocean_passwordsenquanto está logado via SSH.
+
+Este aplicativo está sendo executado na porta 3000 e está sendo servido a você pelo nginx, que mapeou a porta 3000 para ser servida como URI raiz sobre HTTP (porta 80) -- uma técnica conhecida como "proxy reverso". Nós ensinaremos a você como usar essa técnica aqui mesmo nesta página. Se você quiser testar agora mesmo, tente algumas dessas coisas:
+
+SSH em seu Droplet e modifique este script em /var/www/html/hello.jse veja os resultados ao vivo chamandopm2 restart hello
+Execute pm2 listpara ver o código agendado para iniciar no momento da inicialização
+Execute pm2 delete hellopara interromper a execução deste script e pm2 savepara impedir que ele seja executado na inicialização do Droplet
+Obtenha seu código aqui
+SSH no seu Droplet e git cloneseu código NodeJS no droplet, em qualquer lugar que você quiser
+Observação: se você não estiver usando um controle de origem, poderá enviar os arquivos diretamente para seu droplet usando SFTP .
+cdno diretório onde seu código NodeJS está, e instale quaisquer dependências. Por exemplo, se você tiver um package.jsonarquivo, execute npm install.
+Inicie seu aplicativo chamando pm2 start <your-file>, então mapeie a porta em que seu aplicativo é executado para uma URL HTTP executando nano /etc/nginx/sites-available/defaulte adicionando outro location. Use a entrada existente para o aplicativo "hello" da porta 3000 como base.
+Ligue sudo systemctl restart nginxpara habilitar sua nova configuração nginx.
+Ligue pm2 savepara agendar a execução do seu código no lançamento.
+Repita essas etapas para quaisquer outros aplicativos NodeJS que precisem ser executados simultaneamente — programe-os para serem executados no momento da inicialização em qualquer porta interna que você desejar usando PM2, então mapeie essa porta para uma URL HTTP/HTTPS na configuração nginx. Crie a estrutura de diretório de URL necessária mapeando aplicativos para caminhos de URL; esse é o método de proxy reverso em poucas palavras!
+Prepare-se para a produção
+Há muitas coisas que você precisa fazer para garantir que está pronto para a produção.
+
+Configurar um usuário não root para uso diário
+Revise suas configurações de firewall chamando sudo ufw status, e faça as alterações necessárias. Por padrão, apenas SSH/SFTP (porta 22), HTTP (porta 80) e HTTPS (porta 443) estão abertos. Você também pode desabilitar esse firewall chamando sudo ufw disablee usar um firewall de nuvem da DigitalOcean , se quiser (eles são gratuitos).
+Registre um domínio personalizado
+Tem necessidades de dados? Você pode montar um volume (até 16 TB) neste servidor para expandir os arquivosyem, provisionar um cluster de banco de dados (que execute MySQL, Redis ou PostgreSQL) ou usar um Space , que é um bucket compatível com S3 para armazenar objetos.

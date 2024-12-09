@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+        "name": "TshSite",
+        "script": "./node_modules/nuxt/bin/nuxt.mjs",
+        "args": "dev",
+        "instances": 1,
+        "env": {
+          "PORT": 4000,
+          "NODE_ENV": "prod"
+        }
+        }
+    ]
+}
