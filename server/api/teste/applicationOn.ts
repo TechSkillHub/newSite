@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
   return {
-    user: { name: "teste1", email: "teste", role: "teste" }
+    user: { name: "teste2", email: "teste", role: "teste" }
   };
 });
