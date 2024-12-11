@@ -16,10 +16,11 @@ jobs:
 
       # Envio via FTP
       - name: Deploy files to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.5.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: .
-          server-dir: /root/projects/newSite
+          local-dir: ./path-to-your-files
+          server-dir: /path-on-server
+
