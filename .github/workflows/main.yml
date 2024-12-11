@@ -28,9 +28,9 @@ jobs:
 
     - name: Deploy files via FTP
       env:
-        FTP_HOST: ${{ secrets.FTP_SERVER }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_HOST: 167.71.248.139:10000
+        FTP_USERNAME: SiteUser
+        FTP_PASSWORD: Tsh.2023
       run: |
         lftp -c "
         open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
