@@ -1,25 +1,32 @@
-name: Deploy via FTP
+name: Deploy Nuxt via FTP
 
 on:
   push:
     branches:
-      - master  # Substitua pelo branch que você deseja monitorar (ex.: main, master, etc.)
+      - master # Substitua pelo nome da branch que você deseja monitorar
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Fazer checkout do código do repositório
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Check out the repository
+      uses: actions/checkout@v3
 
-      # 2. Deploy dos arquivos via FTP
-      - name: Deploy files to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@4.5.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}      # O endereço do servidor FTP (ex.: ftp.meusite.com)
-          username: ${{ secrets.FTP_USERNAME }}  # O usuário do FTP configurado no Droplet
-          password: ${{ secrets.FTP_PASSWORD }}  # A senha do usuário do FTP
-          local-dir: ./path-to-your-files         # Caminho local (ex.: ./dist ou ./build)
-          server-dir: /path-on-server             # Caminho no servidor FTP (ex.: /var/www/html ou /home/ftpuser)
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18 # Altere para a versão necessária do Node.js
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Upload files via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.5.0
+      with:
+        server: ftp://<SEU-ENDERECO-FTP>
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: . # Substitua pelo diretório de saída do Nuxt
+        server-dir: /root/projects/newSite
