@@ -55,4 +55,4 @@ jobs:
           remote-path: /home/git/projects/newSite
 
           # Port for SFTP access to server
-          remote-port: 221
+          remote-port: 22
