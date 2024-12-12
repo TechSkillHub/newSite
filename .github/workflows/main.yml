@@ -12,12 +12,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy via lftp
+      - name: Add SSH Key
+        run: |
+          eval $(ssh-agent -s)
+          ssh-add <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
+
+      - name: Deploy via SFTP
         run: |
           sudo apt-get install -y lftp
           lftp -e "
-          open sftp://git:Tsh.2023@167.71.248.139;
-          mirror -R --delete . /home/git/projects/newSite;
-          bye
+            set sftp:connect-program 'ssh -a -x -o StrictHostKeyChecking=no';
+            open sftp://git:Tsh.2023@167.71.248.139;
+            mirror -R --delete . /home/git/projects/newSite;
+            bye
           "
+
 
