@@ -8,33 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out the repository
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18 # Altere para a versão necessária do Node.js
-        cache: 'npm'
-
-    - name: Install dependencies
-      run: npm install
-
-
-    - name: Install lftp
-      run: sudo apt-get install -y lftp
-
-    - name: Deploy files via FTP
-      env:
-        FTP_HOST: 167.71.248.139
-        FTP_USERNAME: git
-        FTP_PASSWORD: Tsh.2023
-      run: |
-         lftp -e "
-          set ssl:verify-certificate no;
-          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
-          mirror -R --delete . /home/git/projects/newSite;
-          bye
+      - name: Deploy via lftp
+        run: |
+          sudo apt-get install -y lftp
+          lftp -e "
+            set ssl:verify-certificate no;
+            open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
+            mirror -R --delete . /home/git/projects/newSite;
+            bye
           "
+
