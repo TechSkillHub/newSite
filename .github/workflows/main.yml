@@ -19,5 +19,5 @@ jobs:
           open sftp://git:Tsh.2023@167.71.248.139;
           mirror -R --delete . /home/git/projects/newSite;
           bye
-
+          "
 
