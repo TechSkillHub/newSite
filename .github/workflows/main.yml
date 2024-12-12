@@ -28,12 +28,12 @@ jobs:
 
     - name: Deploy files via FTP
       env:
-        FTP_HOST: 167.71.248.139:10000
-        FTP_USERNAME: SiteUser
+        FTP_HOST: 167.71.248.139
+        FTP_USERNAME: git
         FTP_PASSWORD: Tsh.2023
       run: |
         lftp -c "
         open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
-        mirror -R --delete . /root/projects/newSite;
+        mirror -R --delete . /home/git/projects/newSite;
         bye
         "
