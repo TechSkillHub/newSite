@@ -17,8 +17,9 @@ jobs:
           sudo apt-get install -y lftp
           lftp -e "
             set ssl:verify-certificate no;
-            open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
+            open -u '${{ secrets.FTP_USERNAME }}','${{ secrets.FTP_PASSWORD }}' ${{ secrets.FTP_SERVER }};
             mirror -R --delete . /home/git/projects/newSite;
             bye
           "
+
 
