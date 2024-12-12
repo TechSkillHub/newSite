@@ -32,10 +32,9 @@ jobs:
         FTP_USERNAME: git
         FTP_PASSWORD: Tsh.2023
       run: |
-         sudo apt-get install -y lftp
-          lftp -e "
-            set ssl:verify-certificate no;
-            open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
-            mirror -R --delete . /home/git/projects/newSite;
-            bye
+         lftp -e "
+          set ssl:verify-certificate no;
+          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST;
+          mirror -R --delete . /home/git/projects/newSite;
+          bye
           "
