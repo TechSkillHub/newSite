@@ -16,6 +16,11 @@ export const adminNav = [
     link: '/dashboard/ads-reports'
   },
   {
+    title: 'Teste',
+    link: '/dashboard/ads-reports',
+    claim: 'admin'
+  },
+  {
     title: 'Exit',
     link: '/'
   }

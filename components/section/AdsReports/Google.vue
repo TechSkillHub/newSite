@@ -14,9 +14,9 @@
       <!-- Exibe dados das campanhas se o usuário estiver conectado -->
       <h2 class="text-lg font-bold">Campanhas do Google Ads</h2>
       <ul>
-        <!-- <li v-for="campaign in campaigns" :key="campaign.id">
+        <li v-for="campaign in campaigns" :key="campaign.id">
           {{ campaign.name }} - {{ campaign.status }}
-        </li> -->
+        </li>
       </ul>
     </div>
   </div>

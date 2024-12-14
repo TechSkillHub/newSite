@@ -10,8 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/devtools": "^1.6.4",
     "@pinia/nuxt": "^0.5.5",
-    "@prisma/client": "^5.20.0",
+    "@prisma/client": "^5.22.0",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",

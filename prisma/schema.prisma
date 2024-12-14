@@ -7,16 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Company {
+  id          Int      @id @default(autoincrement())
+  name        String
+  createdAt   DateTime @default(now())
+
+  report      Report[]
+  user        User[]
+}
+
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String?
-  provider  String?
-  isOAuth   Boolean  @default(false)
-  role      String   @default("user")
-  avatar    String?
-  createdAt DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  company       Company? @relation(fields: [companyId], references: [id])
+  companyId     Int?
+  name          String
+  email         String   @unique
+  password      String?
+  provider      String?
+  isOAuth       Boolean  @default(false)
+  role          String   @default("user")
+  avatar        String?
+  firstLogin    Boolean  @default(true)
+  createdAt     DateTime @default(now())
 
   tokens    Token[]
 }
@@ -33,32 +45,17 @@ model Token {
 
 model Report {
   id          Int     @id @default(autoincrement())
+  company       Company? @relation(fields: [companyId], references: [id])
+  companyId     Int?
   reportName  String
   dateRange   String
-  rows        Row[]
+  rows        ReportRow[]
 }
 
-model Row {
+model ReportRow {
   id                      Int     @id @default(autoincrement())
   report                  Report? @relation(fields: [reportId], references: [id])
   reportId                Int?
-  statusDaCampanha        String
-  campanha                String
-  nomeDoOrcamento         String
-  codigoDaMoeda           String
-  orcamento               Float
-  tipoDeOrcamento         String
-  status                  String
-  motivosDoStatus         String
-  pontuacaoDeOtimizacao   Float
-  tipoDeCampanha          String
-  impressoes              Int
-  ctr                     String
-  custo                   Float
-  tipoDeEstrategiaDeLances String
-  cliques                 Int
-  taxaDeConversao         String
-  conversoes              String
-  cpcMedio                Float
-  custoPorConversao       String
+  key                     String
+  value                   String
 }

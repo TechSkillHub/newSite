@@ -142,6 +142,7 @@ const register = async() => {
     name: name.value,
     email: email.value,
     password: password.value,
+    companyId: 1
   }
   await registerUser(body)
 }

@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
-  const { name, email, password } = await readBody(event);
+  const { name, email, password, companyId } = await readBody(event);
 
   const userExist = await prisma.user.findUnique({
     where: {
@@ -32,6 +32,8 @@ export default defineEventHandler(async (event) => {
       name,
       email,
       password: hashedPassword,
+      provider: 'internal',
+      companyId: companyId,
     },
   });
 
