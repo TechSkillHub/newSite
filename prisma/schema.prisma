@@ -1,38 +1,61 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  email     String   @unique
-  password  String?
-  provider  String?
-  isOAuth   Boolean  @default(false)
-  role      String   @default("user")
-  avatar    String?
-  createdAt DateTime @default(now())
+model Company {
+  id          Int      @id @default(autoincrement())
+  name        String
+  createdAt   DateTime @default(now())
 
-  tokens          Token[]
+  report      Report[]
+  user        User[]
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  company       Company? @relation(fields: [companyId], references: [id])
+  companyId     Int?
+  name          String
+  email         String   @unique
+  password      String?
+  provider      String?
+  isOAuth       Boolean  @default(false)
+  role          String   @default("user")
+  avatar        String?
+  firstLogin    Boolean  @default(true)
+  createdAt     DateTime @default(now())
+
+  tokens    Token[]
 }
 
 model Token {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           Int      @id @default(autoincrement())
   accessToken  String
   refreshToken String
   expiresIn    DateTime
 
-  user         User? @relation(fields: [userId], references: [id])
-  userId       String? @db.ObjectId
+  user         User?    @relation(fields: [userId], references: [id])
+  userId       Int?
+}
+
+model Report {
+  id          Int     @id @default(autoincrement())
+  company       Company? @relation(fields: [companyId], references: [id])
+  companyId     Int?
+  reportName  String
+  dateRange   String
+  rows        ReportRow[]
+}
+
+model ReportRow {
+  id                      Int     @id @default(autoincrement())
+  report                  Report? @relation(fields: [reportId], references: [id])
+  reportId                Int?
+  key                     String
+  value                   String
 }

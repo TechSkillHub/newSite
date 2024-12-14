@@ -131,7 +131,7 @@ const loading = () => {
   loadingStore.showLoading()
   setTimeout(() => {
     loadingStore.closeLoading()
-    }, 3000);
+    }, 4000);
 }
 
 const handleLogout = () => {  
