@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userToken.id
+        id: userToken!.id
       }
     })
 

@@ -7,13 +7,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Company {
+model Service {
   id          Int      @id @default(autoincrement())
   name        String
+  label       String
   createdAt   DateTime @default(now())
 
-  report      Report[]
-  user        User[]
+  serviceCompany        ServiceCompany[]
+}
+
+
+
+model Company {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  createdAt             DateTime @default(now())
+
+  serviceCompany        ServiceCompany[]
+  report                Report[]
+  user                  User[]
+}
+
+model ServiceCompany {
+  id                Int     @id @default(autoincrement())
+  company           Company @relation(fields: [companyId], references: [id])
+  companyId         Int
+  service           Service @relation(fields: [serviceId], references: [id])
+  serviceId         Int
+  value             Float
+  description       String
+  validity          Int
+  paymentFrequency  PaymentFrequency
+  createdAt         DateTime @default(now())
+}
+
+enum PaymentFrequency {
+  UNITARY
+  RECURRENT
 }
 
 model User {
@@ -25,12 +55,17 @@ model User {
   password      String?
   provider      String?
   isOAuth       Boolean  @default(false)
-  role          String   @default("user")
+  role          Role     @default(value: USER)
   avatar        String?
   firstLogin    Boolean  @default(true)
   createdAt     DateTime @default(now())
 
   tokens    Token[]
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 model Token {
