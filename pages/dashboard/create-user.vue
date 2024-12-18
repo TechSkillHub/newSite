@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-700 flex flex-col p-8">
     <div class="border-b border-darkTheme pb-8">
-      <h1 class="text-4xl font-bold text-offWhite">Meu Perfil</h1>
+      <h1 class="text-4xl font-bold text-offWhite">Configurações</h1>
     </div>
     <div class="flex flex-col pt-8">
       <div class="flex w-fit gap-1">
@@ -10,14 +10,13 @@
           :class="{'border-b-2 border-primary bg-white ': activeTab === 'dados'}"
           @click="setActiveTab('dados')"
         >
-          Usuários
+          Dados do contratatante
         </button>
         
       </div>
 
       <div class="p-4 bg-white rounded-md rounded-tl-none">
-        <SectionFormsDados v-if="activeTab === 'dados'" />
-        
+        <SectionFormsDados v-if="activeTab === 'register'" />        
       </div>
     </div>
   </div>

@@ -32,13 +32,13 @@
     
     <FieldInput
       v-if="variant !== 'FORGOT'"
-      label="Password" 
-      name="password" 
-      id="password" 
-      v-model="password" 
+      label="Senha" 
+      name="senha" 
+      id="senha" 
+      v-model="senha" 
       :disabled="isSubmitting" 
-      type="password"
-      :has-error="!!errors.password" 
+      type="text"
+      :has-error="!!errors.senha" 
       :rules="variant === 'LOGIN' ? 'required' : 'required|password'"
     />
 
@@ -47,7 +47,7 @@
       class="text-right -mt-4 underline cursor-pointer" 
       @click="toggleForgotPassword"
     >
-      Forgot password?
+      Esqueceu a senha?
     </small>
 
     <FieldButton
@@ -55,12 +55,22 @@
       fullWidth
       type="submit"
     >
-      {{ variant === 'LOGIN' ? 'Sing In' : variant === 'REGISTER' ? 'Register' : 'Reset password' }}
+      {{ variant === 'LOGIN' ? 'Acessar' : variant === 'REGISTER' ? 'Cadastrar' : 'Redefinir senha' }}
+    </FieldButton>
+
+    <FieldButton
+      v-if="variant === 'FORGOT'"
+      :disabled="isSubmitting"
+      fullWidth
+      outlined
+      @click="toggleForgotPassword"
+    >
+      Voltar
     </FieldButton>
   
   </Form>
 
-    <div class="mt-6" v-if="variant !== 'FORGOT'">
+    <!-- <div class="mt-6" v-if="variant !== 'FORGOT'">
       <div class="relative">
         <div class="absolute inset-0 flex items-center">
           <div class="w-full border-t border-gray-300"></div>
@@ -74,7 +84,7 @@
         <FieldSocialButton icon="logos:facebook" name="Facebook" @click="authFacebook" />
         <FieldSocialButton icon="logos:linkedin-icon" name="LinkedIn" @click="authLinkedIn" />
       </div>
-    </div>
+    </div> -->
 
     <div class="flex flex-col lg:flex-row gap-2 justify-center items-center text-sm mt-6 px-2 text-gray-500 text-center">
       <div @click="toggleVariant">
@@ -96,7 +106,7 @@ import { Form } from 'vee-validate';
 
 const name = ref('');
 const email = ref('');
-const password = ref('');
+const senha = ref('');
 
 const authGoogle = () => {
   window.location.href = '/api/auth/login/google';
@@ -125,7 +135,7 @@ const onSubmit = async () => {
 const login = async() => {
   const body = {
     email: email.value,
-    password: password.value,
+    password: senha.value,
   }
   await loginUser(body)
 }
@@ -141,7 +151,7 @@ const register = async() => {
   const body = {
     name: name.value,
     email: email.value,
-    password: password.value,
+    password: senha.value,
     companyId: 1
   }
   await registerUser(body)

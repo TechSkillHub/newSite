@@ -28,7 +28,10 @@ export default defineEventHandler(async (event) => {
 
 
   return {
-    token,
-    user: { name: user.name, email: user.email, role: user.role }
+      success: true,
+      message: 'Login efetuado com sucesso.',
+      data: {
+        token: token
+      }
   };
 });

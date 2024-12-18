@@ -38,6 +38,7 @@ export default defineNuxtPlugin(() => {
   // // Verifica se a senha é válida
   // // A senha deve conter no mínimo 6 caracteres, com pelo menos uma letra e um número.
   defineRule("password", (value: string) => {
+         
     if (value.length < 6) {
       return "A senha deve conter no mínimo 6 caracteres.";
     }
@@ -48,6 +49,10 @@ export default defineNuxtPlugin(() => {
     // A senha deve conter pelo menos um número.
     if (!/\d/.test(value)) {
       return "A senha deve conter pelo menos um número.";
+    }
+    if (!/[!@#\$%\^\&*\)\(+=._-]/.test(value)) {
+      console.log("Precisa conter caracteres especiais.");
+      return "Precisa conter caracteres especiais.";
     }
     return true;
   });

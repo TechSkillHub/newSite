@@ -33,10 +33,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { useContent } from '@/composables/useContent'
+<script setup>
+import { useContentCustom } from '~/composables/useCustomContent'
 
-const content = await useContent()
+const content = await useContentCustom()
 const hero = content.hero
 
 </script>

@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import { useContent } from '@/composables/useContent'
+import { useContentCustom } from '~/composables/useCustomContent'
 
-const content = await useContent()
+const content = await useContentCustom()
 const problems = content.problems
 </script>
 

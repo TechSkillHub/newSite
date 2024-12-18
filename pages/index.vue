@@ -1,11 +1,11 @@
 <template>
   <div>
-    <SectionHero/>
-    <SectionProblemCases/>
-    <SectionServices/>
-    <SectionExpertises/>
+    <SectionHero id=""/>
+    <SectionProblemCases id="solucoes"/>
+    <SectionServices id="servicos"/>
     <!-- <SectionPrices/> -->
-    <SectionWhoUs/>
+    <SectionWhoUs id="sobre-nos"/>
+    <SectionExpertises/>
   </div>
 </template>
 

@@ -6,14 +6,25 @@
       class="w-full flex flex-col gap-4"
     >
       <FieldInput
-        label="New Password" 
-        name="password" 
+        label="Nova senha" 
+        name="nova senha" 
         id="password" 
         type="password"
         rules="required|password"
         v-model="newPassword" 
         :disabled="isSubmitting" 
-        :has-error="!!errors.name" 
+        :has-error="!!errors.newPassword" 
+      />
+
+      <FieldInput
+        label="Confirmar nova senha" 
+        name="confirmar nova senha" 
+        id="password" 
+        type="password"
+        rules="required|password"
+        v-model="confirmPassword" 
+        :disabled="isSubmitting" 
+        :has-error="!!errors.confirmPassword" 
       />
 
       <FieldButton
@@ -39,6 +50,7 @@ const route = useRoute();
 const token = route.query.token;
 
 const newPassword = ref('');
+const confirmPassword = ref('');
 
 const onSubmit = async() => {
   const body = {
