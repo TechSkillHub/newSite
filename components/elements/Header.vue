@@ -1,6 +1,6 @@
 <template>
   <nav class="fixed w-full p-6 bg-header text-header h-header flex shadow-md z-20 transition-all ease-in-out duration-500" :class="scrollY > 90 ? '!bg-gray-700 !bg-opacity-40 backdrop-blur-sm' : ''">
-    <div class="flex items-center justify-between max-w-screen-xl mx-auto w-full">
+    <div class="flex items-center justify-between container mx-auto w-full">
       <!-- Header logo -->
       <div class="">
         <LogosBrand/>
