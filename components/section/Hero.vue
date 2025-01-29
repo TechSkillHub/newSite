@@ -1,5 +1,5 @@
 <template>
-  <ElementsSteps/>
+  <!-- <ElementsSteps/> -->
   <div class="bg-darkTheme flex items-center min-h-[calc(100vh-var(--height-header))] py-8">
     <div class="container flex justify-between items-center md:h-[480px] flex-col md:flex-row gap-8">
       <div class="md:w-1/2 h-full">
