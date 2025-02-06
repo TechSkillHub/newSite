@@ -8,7 +8,7 @@
     <EffectsScrollX :line1="problems.line1" :line2="problems.line2"/>
 
     <div class="container my-8">
-      <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto md:text-xl text-lg">
+      <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto md:text-xl text-lg" @click="sendMsg">
         <span class="w-11/12">{{ problems.cta }}</span>
         <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
       </FieldButton>
@@ -18,9 +18,15 @@
 
 <script setup>
 import { useContentCustom } from '~/composables/useCustomContent'
-
 const content = await useContentCustom()
 const problems = content.problems
+
+import { whatsApp } from '~/utils/datas/whatsapp.data'
+const msg = ref('Olá, quero saber como resolver meus problemas digitais.')
+const sendMsg = () => {
+  window.open(`${whatsApp}?text=${encodeURIComponent(msg.value)}`, '_blank')
+}
+
 </script>
 
 <style scoped>

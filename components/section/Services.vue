@@ -12,6 +12,7 @@
             v-if="item.cta"
             fullWidth
             class="uppercase rounded-full py-4 mx-auto md:text-xl text-lg"
+            @click="sendMsg"
           >
             <span class="w-11/12">{{ item.cta }}</span>
             <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
@@ -21,8 +22,8 @@
     
 
     <div class="container my-8">
-      <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto md:text-xl text-lg">
-        <span class="w-11/12">Quero comerçar minha revolução</span>
+      <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto md:text-xl text-lg" @click="sendMsg">
+        <span class="w-11/12">Quero começar minha revolução</span>
         <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
       </FieldButton>
     </div>
@@ -31,9 +32,14 @@
 
 <script setup>
 import { useContentCustom } from '~/composables/useCustomContent'
-
 const content = await useContentCustom()
 const services = content.services
+
+import { whatsApp } from '~/utils/datas/whatsapp.data'
+const msg = ref('Olá, quero começar minha revolução digital.')
+const sendMsg = () => {
+  window.open(`${whatsApp}?text=${encodeURIComponent(msg.value)}`, '_blank')
+}
 
 </script>
 

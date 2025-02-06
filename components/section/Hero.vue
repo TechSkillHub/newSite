@@ -24,7 +24,7 @@
             <span class="mt-[2px]">{{ item }}</span>
           </div>
           
-          <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4 md:text-xl text-lg">
+          <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4 md:text-xl text-lg" @click="sendMsg">
             <span class="w-11/12">{{ hero.cta }}</span>
             <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
           </FieldButton>
@@ -36,9 +36,14 @@
 
 <script setup>
 import { useContentCustom } from '~/composables/useCustomContent'
-
 const content = await useContentCustom()
 const hero = content.hero
+
+import { whatsApp } from '~/utils/datas/whatsapp.data'
+const msg = ref('Olá, quero explorar a mudança no digital.')
+const sendMsg = () => {
+  window.open(`${whatsApp}?text=${encodeURIComponent(msg.value)}`, '_blank')
+}
 
 </script>
 
