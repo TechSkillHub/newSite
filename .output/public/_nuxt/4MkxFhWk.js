@@ -1,0 +1,1 @@
+import{d as t,o as s,e as o,k as n}from"./DetVfXES.js";const a={class:"bg-primaryLight flex items-center justify-center"},l=t({__name:"account",setup(r){return(c,e)=>(s(),o("div",a,e[0]||(e[0]=[n("h1",{class:"text-4xl font-bold"},"MY ACCOUNT",-1)])))}});export{l as default};

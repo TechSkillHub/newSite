@@ -1,0 +1,1 @@
+import{_ as c}from"./DlG35E0z.js";import{G as e,o as t,l as n}from"./DetVfXES.js";const _={};function r(s,a){const o=c;return t(),n(o,{class:"bg-offWhite"})}const p=e(_,[["render",r]]);export{p as default};

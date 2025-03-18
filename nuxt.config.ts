@@ -27,4 +27,10 @@ export default defineNuxtConfig({
       }),
     ],
   },
+  vgsap: {
+    presets: [],
+    breakpoint: 768,
+    scroller: '',
+    composable: true
+  }
 })

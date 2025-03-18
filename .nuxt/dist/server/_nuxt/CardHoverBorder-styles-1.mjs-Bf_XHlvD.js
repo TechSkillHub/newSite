@@ -1,0 +1,5 @@
+const CardHoverBorder_vue_vue_type_style_index_0_scoped_d320295e_lang = '.wrapper[data-v-d320295e]{border-radius:.75rem;min-height:20rem;overflow:hidden;padding:4px;position:relative;transition-duration:.3s;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);z-index:10}@media (min-width:768px){.wrapper[data-v-d320295e]{width:25%}}.wrapper[data-v-d320295e]:before{background:radial-gradient(250px circle at var(--x) var(--y),var(--color-primary) 0,transparent 100%);content:"";display:block;height:calc(100% + 6px);left:-4px;position:absolute;top:-4px;width:calc(100% + 6px);will-change:background;z-index:-1}';
+export {
+  CardHoverBorder_vue_vue_type_style_index_0_scoped_d320295e_lang as default
+};
+//# sourceMappingURL=CardHoverBorder-styles-1.mjs-Bf_XHlvD.js.map
