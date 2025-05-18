@@ -41,7 +41,8 @@ export default {
       },
     },
     backgroundImage: {
-      'whats': "url('/assets/images/bgWhats.jpg')"
+      'whats': "url('/assets/images/bgWhats.jpg')",
+      'whatsLg': "url('/assets/images/bgWhatsLarge.jpg')",
     },
   },
   plugins: [],

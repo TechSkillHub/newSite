@@ -3,6 +3,7 @@
     <SectionProposta ref="section1" />
     <SectionPropostaQuemSomos ref="section2" />
     <SectionPropostaFunil ref="section3" />
+    <SectionPropostaFunil01 ref="section4" />
     <div class="h-screen" ref="section2"></div>
     <img :src="logo" alt="Logo" class="fixed bottom-8 right-8 w-28 h-28 opacity-70">
   </div>

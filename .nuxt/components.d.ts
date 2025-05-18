@@ -2,7 +2,12 @@
 import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
-      'EffectsCardHoverBorder': typeof import("../components/effects/CardHoverBorder.vue")['default']
+      'WhatsAppChatHeader': typeof import("../components/WhatsApp/ChatHeader.vue")['default']
+    'WhatsAppChatMessages': typeof import("../components/WhatsApp/ChatMessages.vue")['default']
+    'WhatsAppContactCard': typeof import("../components/WhatsApp/ContactCard.vue")['default']
+    'WhatsAppMessageInput': typeof import("../components/WhatsApp/MessageInput.vue")['default']
+    'WhatsAppSidebar': typeof import("../components/WhatsApp/Sidebar.vue")['default']
+    'EffectsCardHoverBorder': typeof import("../components/effects/CardHoverBorder.vue")['default']
     'EffectsCardHoverGlow': typeof import("../components/effects/CardHoverGlow.vue")['default']
     'EffectsNumberRotate': typeof import("../components/effects/NumberRotate.vue")['default']
     'EffectsScrollX': typeof import("../components/effects/ScrollX.vue")['default']
@@ -40,6 +45,7 @@ interface _GlobalComponents {
     'SectionPrices': typeof import("../components/section/Prices.vue")['default']
     'SectionProblemCases': typeof import("../components/section/ProblemCases.vue")['default']
     'SectionPropostaFunil': typeof import("../components/section/Proposta/Funil.vue")['default']
+    'SectionPropostaFunil01': typeof import("../components/section/Proposta/Funil01.vue")['default']
     'SectionPropostaQuemSomos': typeof import("../components/section/Proposta/QuemSomos.vue")['default']
     'SectionProposta': typeof import("../components/section/Proposta/index.vue")['default']
     'SectionServices': typeof import("../components/section/Services.vue")['default']
@@ -107,7 +113,12 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
-      'LazyEffectsCardHoverBorder': typeof import("../components/effects/CardHoverBorder.vue")['default']
+      'LazyWhatsAppChatHeader': typeof import("../components/WhatsApp/ChatHeader.vue")['default']
+    'LazyWhatsAppChatMessages': typeof import("../components/WhatsApp/ChatMessages.vue")['default']
+    'LazyWhatsAppContactCard': typeof import("../components/WhatsApp/ContactCard.vue")['default']
+    'LazyWhatsAppMessageInput': typeof import("../components/WhatsApp/MessageInput.vue")['default']
+    'LazyWhatsAppSidebar': typeof import("../components/WhatsApp/Sidebar.vue")['default']
+    'LazyEffectsCardHoverBorder': typeof import("../components/effects/CardHoverBorder.vue")['default']
     'LazyEffectsCardHoverGlow': typeof import("../components/effects/CardHoverGlow.vue")['default']
     'LazyEffectsNumberRotate': typeof import("../components/effects/NumberRotate.vue")['default']
     'LazyEffectsScrollX': typeof import("../components/effects/ScrollX.vue")['default']
@@ -145,6 +156,7 @@ interface _GlobalComponents {
     'LazySectionPrices': typeof import("../components/section/Prices.vue")['default']
     'LazySectionProblemCases': typeof import("../components/section/ProblemCases.vue")['default']
     'LazySectionPropostaFunil': typeof import("../components/section/Proposta/Funil.vue")['default']
+    'LazySectionPropostaFunil01': typeof import("../components/section/Proposta/Funil01.vue")['default']
     'LazySectionPropostaQuemSomos': typeof import("../components/section/Proposta/QuemSomos.vue")['default']
     'LazySectionProposta': typeof import("../components/section/Proposta/index.vue")['default']
     'LazySectionServices': typeof import("../components/section/Services.vue")['default']
@@ -218,6 +230,11 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const WhatsAppChatHeader: typeof import("../components/WhatsApp/ChatHeader.vue")['default']
+export const WhatsAppChatMessages: typeof import("../components/WhatsApp/ChatMessages.vue")['default']
+export const WhatsAppContactCard: typeof import("../components/WhatsApp/ContactCard.vue")['default']
+export const WhatsAppMessageInput: typeof import("../components/WhatsApp/MessageInput.vue")['default']
+export const WhatsAppSidebar: typeof import("../components/WhatsApp/Sidebar.vue")['default']
 export const EffectsCardHoverBorder: typeof import("../components/effects/CardHoverBorder.vue")['default']
 export const EffectsCardHoverGlow: typeof import("../components/effects/CardHoverGlow.vue")['default']
 export const EffectsNumberRotate: typeof import("../components/effects/NumberRotate.vue")['default']
@@ -256,6 +273,7 @@ export const SectionOurServicesSites: typeof import("../components/section/OurSe
 export const SectionPrices: typeof import("../components/section/Prices.vue")['default']
 export const SectionProblemCases: typeof import("../components/section/ProblemCases.vue")['default']
 export const SectionPropostaFunil: typeof import("../components/section/Proposta/Funil.vue")['default']
+export const SectionPropostaFunil01: typeof import("../components/section/Proposta/Funil01.vue")['default']
 export const SectionPropostaQuemSomos: typeof import("../components/section/Proposta/QuemSomos.vue")['default']
 export const SectionProposta: typeof import("../components/section/Proposta/index.vue")['default']
 export const SectionServices: typeof import("../components/section/Services.vue")['default']
@@ -323,6 +341,11 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+export const LazyWhatsAppChatHeader: typeof import("../components/WhatsApp/ChatHeader.vue")['default']
+export const LazyWhatsAppChatMessages: typeof import("../components/WhatsApp/ChatMessages.vue")['default']
+export const LazyWhatsAppContactCard: typeof import("../components/WhatsApp/ContactCard.vue")['default']
+export const LazyWhatsAppMessageInput: typeof import("../components/WhatsApp/MessageInput.vue")['default']
+export const LazyWhatsAppSidebar: typeof import("../components/WhatsApp/Sidebar.vue")['default']
 export const LazyEffectsCardHoverBorder: typeof import("../components/effects/CardHoverBorder.vue")['default']
 export const LazyEffectsCardHoverGlow: typeof import("../components/effects/CardHoverGlow.vue")['default']
 export const LazyEffectsNumberRotate: typeof import("../components/effects/NumberRotate.vue")['default']
@@ -361,6 +384,7 @@ export const LazySectionOurServicesSites: typeof import("../components/section/O
 export const LazySectionPrices: typeof import("../components/section/Prices.vue")['default']
 export const LazySectionProblemCases: typeof import("../components/section/ProblemCases.vue")['default']
 export const LazySectionPropostaFunil: typeof import("../components/section/Proposta/Funil.vue")['default']
+export const LazySectionPropostaFunil01: typeof import("../components/section/Proposta/Funil01.vue")['default']
 export const LazySectionPropostaQuemSomos: typeof import("../components/section/Proposta/QuemSomos.vue")['default']
 export const LazySectionProposta: typeof import("../components/section/Proposta/index.vue")['default']
 export const LazySectionServices: typeof import("../components/section/Services.vue")['default']

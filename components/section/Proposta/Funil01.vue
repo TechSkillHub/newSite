@@ -1,16 +1,21 @@
 <template>
-  <div id="funil" class="bg-offWhite h-screen overflow-x-hidden flex justify-center items-center text-center">
+  <div id="funil01" class="bg-offWhite h-screen overflow-x-hidden flex justify-center items-center text-center">
     <div class="max-w-screen-xl grid grid-flow-col gap-8 items-center h-fit">  
       <div class="grid grid-flow-row h-full gap-8">
         <h1 class="text-5xl title font-semibold uppercase leading-tight">Começando a sua <span class="text-primary font-theme font-normal">revolução digital</span></h1>
-        <h2 class="title text-2xl">Funil de Vendas Ideal:</h2>
+        <!-- <h2 class="title text-2xl">Ogânico:</h2> -->
         <div class="funnel">
-          <div class="funnel-part">SEO, Ads e Redes Sociais</div>
-          <div class="funnel-part">Site e LandingPage</div>
+          <div class="funnel-part">SEO</div>
+          <!-- <div class="funnel-part">Site e LandingPage</div>
           <div class="funnel-part">WhatsApp</div>
-          <div class="funnel-part">Venda</div>
+          <div class="funnel-part">Venda</div> -->
           <!-- <div class="funnel-part"></div> -->
-      </div>
+        </div>
+        <p>SEO é um conjunto de técnicas e estratégias para sites ficarem melhor posicionados nos buscadores,<br> gerar reconhecimento de marca, aumentar o tráfego e as conversões.</p>
+        <div class="flex gap-4">
+          <div class="bg-gray-300 w-full h-80"></div>
+          <div class="bg-gray-300 w-full h-80"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -24,7 +29,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  gsap.from('#funil .title', {
+  gsap.from('#funil01 .title', {
     y: -100,
     opacity: 0,
     duration: 1.5,
@@ -33,12 +38,12 @@ onMounted(() => {
     stagger: 0.5,
     scrollTrigger: {
       toggleActions: 'play reverse play reverse',
-      trigger: '#funil',
+      trigger: '#funil01',
       start: 'top center',
       end: 'bottom center',
     },
   });
-  gsap.from('#funil .funnel-part', {
+  gsap.from('#funil01 .funnel-part', {
     x: 100,
     opacity: 0,
     duration: 1.5,
@@ -47,7 +52,7 @@ onMounted(() => {
     stagger: 0.5,
     scrollTrigger: {
       toggleActions: 'play reverse play reverse',
-      trigger: '#funil',
+      trigger: '#funil01',
       start: 'top center',
       end: 'bottom center',
     },

@@ -1,1 +1,0 @@
-import{d as o,o as n,l as s,w as f,a1 as p,H as _}from"./DetVfXES.js";const u=o({__name:"ProseA",props:{href:{type:String,default:""},target:{type:String,default:void 0,required:!1}},setup(t){const e=t;return(r,c)=>{const a=p;return n(),s(a,{href:e.href,target:e.target},{default:f(()=>[_(r.$slots,"default")]),_:3},8,["href","target"])}}});export{u as default};
