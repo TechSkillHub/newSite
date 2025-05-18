@@ -264,7 +264,7 @@ const _BYnqD9 = eventHandler((event) => {
 const inlineAppConfig = {
   "nuxt": {},
   "icon": {
-    "provider": "iconify",
+    "provider": "server",
     "class": "",
     "aliases": {},
     "iconifyApiEndpoint": "https://api.iconify.design",
@@ -504,7 +504,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "5cedc2ab-4fcb-4c82-a970-fc70f9403d4c",
+    "buildId": "aef66a41-f0c4-4f21-a648-ee114d6f2a37",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -577,7 +577,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1742258871618,
+      "integrity": 1747607330504,
       "experimental": {
         "stripQueryParameters": false,
         "advanceQuery": false,
@@ -2053,6 +2053,13 @@ async function getUserSession(event) {
 }
 
 const collections = {
+  'fa6-brands': () => import('./icons.mjs').then(m => m.default),
+  'fluent': () => import('./icons2.mjs').then(m => m.default),
+  'logos': () => import('./icons3.mjs').then(m => m.default),
+  'material-symbols': () => import('./icons4.mjs').then(m => m.default),
+  'mdi': () => import('./icons5.mjs').then(m => m.default),
+  'ri': () => import('./icons6.mjs').then(m => m.default),
+  'svg-spinners': () => import('./icons7.mjs').then(m => m.default),
 };
 
 const DEFAULT_ENDPOINT = "https://api.iconify.design";
@@ -2246,7 +2253,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1742258871618.json', handler: _qm6JML, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1747607330504.json', handler: _qm6JML, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },

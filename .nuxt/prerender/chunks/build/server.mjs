@@ -3,7 +3,7 @@ import { $fetch as $fetch$1 } from 'file://C:/Users/TechSkillHub/Projetos/tsh.pr
 import { n as baseURL } from '../_/nitro.mjs';
 import { createHooks } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/hookable/dist/index.mjs';
 import { getContext } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/unctx/dist/index.mjs';
-import { createError as createError$1, sanitizeStatusCode, appendHeader } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/h3/dist/index.mjs';
+import { createError as createError$1, sanitizeStatusCode } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/h3/dist/index.mjs';
 import { defineStore, createPinia, setActivePinia, shouldHydrate } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/pinia/dist/pinia.prod.cjs';
 import { defuFn, defu } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/defu/dist/defu.mjs';
 import { CapoPlugin, getActiveHead } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/unhead/dist/index.mjs';
@@ -475,10 +475,10 @@ const coreComposableNames = [
 });
 async function getRouteRules(url) {
   {
-    const _routeRulesMatcher2 = toRouteMatcher(
+    const _routeRulesMatcher = toRouteMatcher(
       createRouter$1({ routes: (/* @__PURE__ */ useRuntimeConfig()).nitro.routeRules })
     );
-    return defu({}, ..._routeRulesMatcher2.matchAll(url).reverse());
+    return defu({}, ..._routeRulesMatcher.matchAll(url).reverse());
   }
 }
 function definePayloadReducer(name, reduce) {
@@ -642,9 +642,12 @@ const generateRouteKey$1 = (routeProps, override) => {
 const wrapInKeepAlive = (props, children) => {
   return { default: () => children };
 };
-function toArray$1(value) {
+function toArray(value) {
   return Array.isArray(value) ? value : [value];
 }
+const __nuxt_page_meta$b = {
+  layout: "default"
+};
 const __nuxt_page_meta$a = {
   layout: "default"
 };
@@ -652,7 +655,9 @@ const __nuxt_page_meta$9 = {
   layout: "default"
 };
 const __nuxt_page_meta$8 = {
-  layout: "default"
+  middleware: "auth",
+  auth: false,
+  layout: "clear"
 };
 const __nuxt_page_meta$7 = {
   middleware: "auth",
@@ -707,20 +712,26 @@ const _routes = [
   {
     name: "auth",
     path: "/auth",
-    meta: __nuxt_page_meta$a || {},
+    meta: __nuxt_page_meta$b || {},
     component: () => import('./index-C78qljfC.mjs')
   },
   {
     name: "auth-new-password",
     path: "/auth/new-password",
-    meta: __nuxt_page_meta$9 || {},
+    meta: __nuxt_page_meta$a || {},
     component: () => import('./new-password-ClRu4Vac.mjs')
   },
   {
     name: "auth-reset-password",
     path: "/auth/reset-password",
-    meta: __nuxt_page_meta$8 || {},
+    meta: __nuxt_page_meta$9 || {},
     component: () => import('./reset-password-uSkZXv5O.mjs')
+  },
+  {
+    name: "chat",
+    path: "/chat",
+    meta: __nuxt_page_meta$8 || {},
+    component: () => import('./chat-CEz7_fXA.mjs')
   },
   {
     name: "dashboard-account",
@@ -738,13 +749,13 @@ const _routes = [
     name: "dashboard-create-user",
     path: "/dashboard/create-user",
     meta: __nuxt_page_meta$5 || {},
-    component: () => import('./create-user-CJ7ahX-j.mjs')
+    component: () => import('./create-user-BGrORQQ2.mjs')
   },
   {
     name: "dashboard-forms",
     path: "/dashboard/forms",
     meta: __nuxt_page_meta$4 || {},
-    component: () => import('./forms-BZBWP2fO.mjs')
+    component: () => import('./forms-OK3fujY8.mjs')
   },
   {
     name: "dashboard",
@@ -756,19 +767,19 @@ const _routes = [
     name: "dashboard-my-profile",
     path: "/dashboard/my-profile",
     meta: __nuxt_page_meta$2 || {},
-    component: () => import('./my-profile-CULewKr1.mjs')
+    component: () => import('./my-profile-DZpJrUXx.mjs')
   },
   {
     name: "index",
     path: "/",
     meta: __nuxt_page_meta$1 || {},
-    component: () => import('./index-DFrGX4df.mjs')
+    component: () => import('./index-WnT0FZAW.mjs')
   },
   {
     name: "proposta",
     path: "/proposta",
     meta: __nuxt_page_meta || {},
-    component: () => import('./proposta-B8j-8LsO.mjs')
+    component: () => import('./proposta-Bh2iEZ05.mjs')
   }
 ];
 const _wrapIf = (component, props, slots) => {
@@ -930,7 +941,7 @@ const globalMiddleware = [
   manifest_45route_45rule
 ];
 const namedMiddleware = {
-  auth: () => import('./auth-Cw54jdRo.mjs')
+  auth: () => import('./auth-SQSR3Aep.mjs')
 };
 const plugin$1 = /* @__PURE__ */ defineNuxtPlugin({
   name: "nuxt:router",
@@ -943,7 +954,7 @@ const plugin$1 = /* @__PURE__ */ defineNuxtPlugin({
       routerBase += "#";
     }
     const history = ((_a = routerOptions.history) == null ? void 0 : _a.call(routerOptions, routerBase)) ?? createMemoryHistory(routerBase);
-    const routes2 = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
+    const routes = routerOptions.routes ? ([__temp, __restore] = executeAsync(() => routerOptions.routes(_routes)), __temp = await __temp, __restore(), __temp) ?? _routes : _routes;
     let startPosition;
     const router = createRouter({
       ...routerOptions,
@@ -964,7 +975,7 @@ const plugin$1 = /* @__PURE__ */ defineNuxtPlugin({
         }
       },
       history,
-      routes: routes2
+      routes
     });
     nuxtApp.vueApp.use(router);
     const previousRoute = shallowRef(router.currentRoute.value);
@@ -1046,7 +1057,7 @@ const plugin$1 = /* @__PURE__ */ defineNuxtPlugin({
           if (!componentMiddleware) {
             continue;
           }
-          for (const entry2 of toArray$1(componentMiddleware)) {
+          for (const entry2 of toArray(componentMiddleware)) {
             middlewareEntries.add(entry2);
           }
         }
@@ -1137,9 +1148,6 @@ const revive_payload_server_eJ33V7gbc6 = /* @__PURE__ */ defineNuxtPlugin({
     }
   }
 });
-function toArray(value) {
-  return Array.isArray(value) ? value : [value];
-}
 const isDefer = (dedupe) => dedupe === "defer" || dedupe === false;
 function useAsyncData(...args) {
   var _a, _b;
@@ -1286,14 +1294,6 @@ function pick(obj, keys) {
     newObj[key] = obj[key];
   }
   return newObj;
-}
-function useRequestEvent(nuxtApp = useNuxtApp()) {
-  var _a;
-  return (_a = nuxtApp.ssrContext) == null ? void 0 : _a.event;
-}
-function prerenderRoutes(path) {
-  const paths = toArray(path);
-  appendHeader(useRequestEvent(), "x-nitro-prerender", paths.map((p) => encodeURIComponent(p)).join(", "));
 }
 async function preloadRouteComponents(to, router = useRouter()) {
   {
@@ -1593,7 +1593,7 @@ function isSlowConnection() {
 const inlineConfig = {
   "nuxt": {},
   "icon": {
-    "provider": "iconify",
+    "provider": "server",
     "class": "",
     "aliases": {},
     "iconifyApiEndpoint": "https://api.iconify.design",
@@ -1811,42 +1811,42 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
     };
   }
 });
-const LazyContentDoc = defineAsyncComponent(() => import('./ContentDoc-tMHUUI3I.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentList = defineAsyncComponent(() => import('./ContentList-Cns3NsYm.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentNavigation = defineAsyncComponent(() => import('./ContentNavigation-CIBxVJ8s.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentQuery = defineAsyncComponent(() => import('./ContentQuery-DO8Kc-WF.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentRenderer = defineAsyncComponent(() => import('./ContentRenderer-Ce2Zt0kj.mjs').then((r) => r["default"] || r.default || r));
-const LazyContentRendererMarkdown = defineAsyncComponent(() => import('./ContentRendererMarkdown-B-OPJD35.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentDoc = defineAsyncComponent(() => import('./ContentDoc-ycMWkH87.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentList = defineAsyncComponent(() => import('./ContentList-Bb4MQJtm.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentNavigation = defineAsyncComponent(() => import('./ContentNavigation-oW5GD1ju.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentQuery = defineAsyncComponent(() => import('./ContentQuery-BasSAfD5.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentRenderer = defineAsyncComponent(() => import('./ContentRenderer-DKv2EOJw.mjs').then((r) => r["default"] || r.default || r));
+const LazyContentRendererMarkdown = defineAsyncComponent(() => import('./ContentRendererMarkdown-BdzGKi-N.mjs').then((r) => r["default"] || r.default || r));
 const LazyContentSlot = defineAsyncComponent(() => import('./ContentSlot-DNhFlZPM.mjs').then((r) => r["default"] || r.default || r));
 const LazyDocumentDrivenEmpty = defineAsyncComponent(() => import('./DocumentDrivenEmpty-CVfz7tly.mjs').then((r) => r["default"] || r.default || r));
 const LazyDocumentDrivenNotFound = defineAsyncComponent(() => import('./DocumentDrivenNotFound-4pTrsASA.mjs').then((r) => r["default"] || r.default || r));
 const LazyMarkdown = defineAsyncComponent(() => import('./Markdown-DRg0F_8k.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseCode = defineAsyncComponent(() => import('./ProseCode-xuPxMa16.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseCodeInline = defineAsyncComponent(() => import('./ProseCodeInline-JXzw9tCX.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseCodeInline = defineAsyncComponent(() => import('./ProseCodeInline-CxVehfKI.mjs').then((r) => r["default"] || r.default || r));
 const LazyProsePre = defineAsyncComponent(() => import('./ProsePre-Brs49lSw.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseA = defineAsyncComponent(() => import('./ProseA-BnZzoS1P.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseBlockquote = defineAsyncComponent(() => import('./ProseBlockquote-B_lpK1_F.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseEm = defineAsyncComponent(() => import('./ProseEm-1n5_Nsei.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH1 = defineAsyncComponent(() => import('./ProseH1-PpJyPQNk.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH2 = defineAsyncComponent(() => import('./ProseH2-iFwOfJwe.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH3 = defineAsyncComponent(() => import('./ProseH3-D2rbmsqA.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH4 = defineAsyncComponent(() => import('./ProseH4-DwqMnoHV.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH5 = defineAsyncComponent(() => import('./ProseH5-CSALlrXr.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseH6 = defineAsyncComponent(() => import('./ProseH6-DioGr6C8.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseHr = defineAsyncComponent(() => import('./ProseHr-BNVqWjwk.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseImg = defineAsyncComponent(() => import('./ProseImg-BmX-LiI6.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseLi = defineAsyncComponent(() => import('./ProseLi-DSpGrpO0.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseOl = defineAsyncComponent(() => import('./ProseOl-CadauK0o.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseP = defineAsyncComponent(() => import('./ProseP-Co12hVLx.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseA = defineAsyncComponent(() => import('./ProseA-BRA8CfU0.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseBlockquote = defineAsyncComponent(() => import('./ProseBlockquote-BnGNKANM.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseEm = defineAsyncComponent(() => import('./ProseEm-CrYIZGTQ.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH1 = defineAsyncComponent(() => import('./ProseH1-DG7CgnZd.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH2 = defineAsyncComponent(() => import('./ProseH2-DaiFrMLG.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH3 = defineAsyncComponent(() => import('./ProseH3-z7o98T_j.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH4 = defineAsyncComponent(() => import('./ProseH4-CsyHVFOx.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH5 = defineAsyncComponent(() => import('./ProseH5-C6KBteKO.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseH6 = defineAsyncComponent(() => import('./ProseH6-P0c-EuTJ.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseHr = defineAsyncComponent(() => import('./ProseHr-DNUo9g1t.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseImg = defineAsyncComponent(() => import('./ProseImg-CBVW0lkM.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseLi = defineAsyncComponent(() => import('./ProseLi-2bs1V5Kc.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseOl = defineAsyncComponent(() => import('./ProseOl-CMX563Mg.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseP = defineAsyncComponent(() => import('./ProseP-DHKPp92R.mjs').then((r) => r["default"] || r.default || r));
 const LazyProseScript = defineAsyncComponent(() => import('./ProseScript-D0R07iM6.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseStrong = defineAsyncComponent(() => import('./ProseStrong-CY_r71ob.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTable = defineAsyncComponent(() => import('./ProseTable-BJHgF8CT.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTbody = defineAsyncComponent(() => import('./ProseTbody-BWEjQeUA.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTd = defineAsyncComponent(() => import('./ProseTd-DbHGV4Ak.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTh = defineAsyncComponent(() => import('./ProseTh-DB8NEbu6.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseThead = defineAsyncComponent(() => import('./ProseThead-BoRg8Bom.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseTr = defineAsyncComponent(() => import('./ProseTr-DOFLHDvJ.mjs').then((r) => r["default"] || r.default || r));
-const LazyProseUl = defineAsyncComponent(() => import('./ProseUl-CcYaxFoo.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseStrong = defineAsyncComponent(() => import('./ProseStrong-D2FRdfr-.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTable = defineAsyncComponent(() => import('./ProseTable-AtWZxIUC.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTbody = defineAsyncComponent(() => import('./ProseTbody-B3ES8Sgh.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTd = defineAsyncComponent(() => import('./ProseTd-DxpWbeol.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTh = defineAsyncComponent(() => import('./ProseTh-CLgdWihE.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseThead = defineAsyncComponent(() => import('./ProseThead-Djm64Sbu.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseTr = defineAsyncComponent(() => import('./ProseTr-C_4BaTQg.mjs').then((r) => r["default"] || r.default || r));
+const LazyProseUl = defineAsyncComponent(() => import('./ProseUl-Dy6mEJbv.mjs').then((r) => r["default"] || r.default || r));
 const LazyIcon = defineAsyncComponent(() => Promise.resolve().then(function() {
   return index;
 }).then((r) => r["default"] || r.default || r));
@@ -1938,47 +1938,6 @@ const plugin_WLsn00x1qh = /* @__PURE__ */ defineNuxtPlugin({
     }
   }
 });
-let routes;
-let _routeRulesMatcher = void 0;
-const prerender_server_LXx1wM9sKF = /* @__PURE__ */ defineNuxtPlugin(async () => {
-  let __temp, __restore;
-  if (routerOptions.hashMode) {
-    return;
-  }
-  if (routes && !routes.length) {
-    return;
-  }
-  (/* @__PURE__ */ useRuntimeConfig()).nitro.routeRules;
-  routes || (routes = Array.from(processRoutes(([__temp, __restore] = executeAsync(() => {
-    var _a;
-    return (_a = routerOptions.routes) == null ? void 0 : _a.call(routerOptions, _routes);
-  }), __temp = await __temp, __restore(), __temp) ?? _routes)));
-  const batch = routes.splice(0, 10);
-  prerenderRoutes(batch);
-});
-const OPTIONAL_PARAM_RE = /^\/?:.*(?:\?|\(\.\*\)\*)$/;
-function shouldPrerender(path) {
-  return !_routeRulesMatcher;
-}
-function processRoutes(routes2, currentPath = "/", routesToPrerender = /* @__PURE__ */ new Set()) {
-  var _a;
-  for (const route of routes2) {
-    if (OPTIONAL_PARAM_RE.test(route.path) && !((_a = route.children) == null ? void 0 : _a.length) && shouldPrerender()) {
-      routesToPrerender.add(currentPath);
-    }
-    if (route.path.includes(":")) {
-      continue;
-    }
-    const fullPath = joinURL(currentPath, route.path);
-    {
-      routesToPrerender.add(fullPath);
-    }
-    if (route.children) {
-      processRoutes(route.children, fullPath, routesToPrerender);
-    }
-  }
-  return routesToPrerender;
-}
 const plugins = [
   payloadPlugin,
   unhead_KgADcZ0jPj,
@@ -1986,8 +1945,7 @@ const plugins = [
   revive_payload_server_eJ33V7gbc6,
   plugin,
   components_plugin_KR1HBZs4kY,
-  plugin_WLsn00x1qh,
-  prerender_server_LXx1wM9sKF
+  plugin_WLsn00x1qh
 ];
 async function loadIcon(name, timeout) {
   if (!name)
@@ -2464,9 +2422,9 @@ _sfc_main$4.setup = (props, ctx) => {
   return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
 const layouts = {
-  admin: defineAsyncComponent(() => import('./admin-C8f1jAFl.mjs')),
-  clear: defineAsyncComponent(() => import('./clear-BvxCFZOZ.mjs')),
-  default: defineAsyncComponent(() => import('./default-4fGJYTFw.mjs'))
+  admin: defineAsyncComponent(() => import('./admin-_0OCqISk.mjs')),
+  clear: defineAsyncComponent(() => import('./clear-DnQiKi7P.mjs')),
+  default: defineAsyncComponent(() => import('./default-Dt0jZy0W.mjs'))
 };
 const LayoutLoader = defineComponent({
   name: "LayoutLoader",
@@ -2822,5 +2780,5 @@ let entry;
 }
 const entry$1 = (ssrContext) => entry(ssrContext);
 
-export { LayoutMetaSymbol as L, PageRouteSymbol as P, _sfc_main$6 as _, useUserStore as a, useRouter as b, useModalStore as c, useLoadingStore as d, entry$1 as default, useRoute as e, _export_sfc as f, __nuxt_component_0$2 as g, _imports_0 as h, defineNuxtRouteMiddleware as i, useHead as j, useRuntimeConfig as k, useRequestEvent as l, useNuxtApp as m, useAsyncData as n, __nuxt_component_2$1 as o, _sfc_main$2 as p, generateRouteKey$1 as q, appPageTransition as r, appKeepalive as s, _wrapIf as t, useAuthStore as u, toArray$1 as v, wrapInKeepAlive as w };
+export { LayoutMetaSymbol as L, PageRouteSymbol as P, _sfc_main$6 as _, useUserStore as a, useRouter as b, useModalStore as c, useLoadingStore as d, entry$1 as default, useRoute as e, __nuxt_component_0$2 as f, _export_sfc as g, _imports_0 as h, useRuntimeConfig as i, useNuxtApp as j, defineNuxtRouteMiddleware as k, useHead as l, useAsyncData as m, __nuxt_component_2$1 as n, _sfc_main$2 as o, generateRouteKey$1 as p, appPageTransition as q, appKeepalive as r, _wrapIf as s, toArray as t, useAuthStore as u, wrapInKeepAlive as w };
 //# sourceMappingURL=server.mjs.map
