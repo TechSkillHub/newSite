@@ -9,7 +9,7 @@ on:
   # but only for the specific branch
   push:
     branches:
-      - master
+      - main
 
 # A workflow run is made up of one or more jobs 
 # that can run sequentially or in parallel
@@ -37,12 +37,12 @@ jobs:
           fetch-depth: 0
 
           # Checkout a specific branch
-          ref: master
+          ref: main
 
       # This is a composite GitHub Action (Linux runner) 
       # for deploying repository content to remote server
       - name: SFTP-Deploy-Action
-        uses: milanmk/actions-file-deployer@master
+        uses: milanmk/actions-file-deployer@main
         with:
           remote-protocol: sftp
 
