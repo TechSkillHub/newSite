@@ -36,6 +36,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: 'node-server',
+    port: 3010,  // Para produção (modo start)
     serveStatic: false,
     serverAssets: [
       {
@@ -45,7 +46,7 @@ export default defineNuxtConfig({
     ]
   },
   devServer: {
-    port: 3010,
+    port: 4000,  // Para desenvolvimento (modo dev)
     host: 'localhost'
-  }
+  },
 })

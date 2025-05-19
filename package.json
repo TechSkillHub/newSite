@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build --port 3010",
+    "build": "nuxt build",
     "dev": "nuxt dev --port 4000",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --port 3010",
     "postinstall": "nuxt prepare",
-    "start": "node .output/server/index.mjs"
+    "start": "PORT=3010 node .output/server/index.mjs"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.4",
