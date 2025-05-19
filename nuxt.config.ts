@@ -32,5 +32,11 @@ export default defineNuxtConfig({
     breakpoint: 768,
     scroller: '',
     composable: true
+  },
+  nitro: {
+    port: 3010,  
+    devServer: {
+      port: 3010
+    }
   }
 })

@@ -37,7 +37,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             DEPLOY_DIR="/var/www/techskillhub.com"
-            PORT=3000  # Porta exclusiva para homologação
+            PORT=3010  # Porta exclusiva para homologação
             
             # Configuração do diretório
             mkdir -p $DEPLOY_DIR

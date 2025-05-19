@@ -504,7 +504,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "aef66a41-f0c4-4f21-a648-ee114d6f2a37",
+    "buildId": "a24f0a70-8f05-4d22-8d8c-78cb2f95aae7",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -577,7 +577,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1747607330504,
+      "integrity": 1747615762698,
       "experimental": {
         "stripQueryParameters": false,
         "advanceQuery": false,
@@ -2253,7 +2253,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1747607330504.json', handler: _qm6JML, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1747615762698.json', handler: _qm6JML, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
