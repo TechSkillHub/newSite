@@ -1,12 +1,12 @@
 {
     "apps": [
         {
-        "name": "TshSite",
+        "name": "techskillhub.com",
         "script": "./node_modules/nuxt/bin/nuxt.mjs",
         "args": "dev",
         "instances": 1,
         "env": {
-          "PORT": 4000,
+          "PORT": 3010,
           "NODE_ENV": "prod"
         }
         }

@@ -80,7 +80,7 @@ jobs:
             npm install
 
             echo "Buildando o projeto..."
-            npm run build
+            NODE_OPTIONS=--max-old-space-size=2048 npm run build
 
             echo "Reiniciando o PM2..."
             pm2 restart techskillhub.com || pm2 start npm --name "techskillhub.com" -- run preview -- --port $PORT
