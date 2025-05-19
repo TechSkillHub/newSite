@@ -17,10 +17,9 @@ import 'github-slugger';
 import 'mailersend';
 import 'jsonwebtoken';
 import '@prisma/client';
-import 'node:fs';
-import 'node:url';
 import '@iconify/utils';
 import 'consola/core';
+import 'node:fs';
 import 'node:path';
 
 const cert = process.env.NITRO_SSL_CERT;

@@ -17,10 +17,9 @@ import 'jsonwebtoken';
 import '@prisma/client';
 import 'node:http';
 import 'node:https';
-import 'node:fs';
-import 'node:url';
 import '@iconify/utils';
 import 'consola/core';
+import 'node:fs';
 import 'node:path';
 
 const index = defineEventHandler(async (event) => {

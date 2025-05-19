@@ -20,10 +20,11 @@ export default defineNuxtConfig({
     }
   },
   vite: {
+    port: 3010,
     plugins: [
       viteCompression({
-        algorithm: 'brotliCompress', // Usa Brotli (melhor compressão)
-        threshold: 1024,            // Comprime arquivos maiores que 1 KB
+        algorithm: 'brotliCompress',
+        // threshold: 1024,
       }),
     ],
   },
@@ -34,9 +35,17 @@ export default defineNuxtConfig({
     composable: true
   },
   nitro: {
-    port: 3010,  
-    devServer: {
-      port: 3010
-    }
+    preset: 'node-server',
+    serveStatic: false,
+    serverAssets: [
+      {
+        baseName: 'public',
+        dir: './public'
+      }
+    ]
+  },
+  devServer: {
+    port: 3010,
+    host: 'localhost'
   }
 })

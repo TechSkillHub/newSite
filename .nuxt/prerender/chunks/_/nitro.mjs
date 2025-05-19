@@ -1,5 +1,5 @@
-import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, eventHandler, appendResponseHeader, removeResponseHeader, createError, getResponseHeader, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, getQuery as getQuery$1, getRequestURL, getCookie, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/h3/dist/index.mjs';
-import { withQuery, joinURL, decodePath, withLeadingSlash, withoutTrailingSlash, parseURL, withoutBase, getQuery, joinRelativeURL } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/ufo/dist/index.mjs';
+import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, defineEventHandler, handleCacheHeaders, createEvent, fetchWithEvent, isEvent, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, getQuery as getQuery$1, getRequestURL, getCookie, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/h3/dist/index.mjs';
+import { withQuery, joinURL, parseURL, withoutBase, getQuery, joinRelativeURL } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/ufo/dist/index.mjs';
 import { unified } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/unified/index.js';
 import remarkParse from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/remark-parse/index.js';
 import remark2rehype from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/remark-rehype/index.js';
@@ -22,9 +22,7 @@ import destr from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_
 import { createHooks } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/hookable/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/ofetch/dist/node.mjs';
 import { createCall, createFetch } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/unenv/runtime/fetch/index.mjs';
-import { promises } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve, basename } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/pathe/dist/index.mjs';
+import { basename } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/pathe/dist/index.mjs';
 import { getIcons } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/@iconify/utils/lib/index.mjs';
 import { hash } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/ohash/dist/index.mjs';
 import { consola } from 'file://C:/Users/TechSkillHub/Projetos/tsh.principalSite/node_modules/unenv/runtime/npm/consola.mjs';
@@ -168,98 +166,6 @@ const errorHandler = (async function errorhandler(error, event) {
 const plugins = [
   
 ];
-
-const assets$1 = {};
-
-function readAsset (id) {
-  const serverDir = dirname(fileURLToPath(globalThis._importMeta_.url));
-  return promises.readFile(resolve(serverDir, assets$1[id].path))
-}
-
-const publicAssetBases = {"/_nuxt/builds/meta/":{"maxAge":31536000},"/_nuxt/builds/":{"maxAge":1},"/_nuxt/":{"maxAge":31536000}};
-
-function isPublicAssetURL(id = '') {
-  if (assets$1[id]) {
-    return true
-  }
-  for (const base in publicAssetBases) {
-    if (id.startsWith(base)) { return true }
-  }
-  return false
-}
-
-function getAsset (id) {
-  return assets$1[id]
-}
-
-const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
-const EncodingMap = { gzip: ".gz", br: ".br" };
-const _BYnqD9 = eventHandler((event) => {
-  if (event.method && !METHODS.has(event.method)) {
-    return;
-  }
-  let id = decodePath(
-    withLeadingSlash(withoutTrailingSlash(parseURL(event.path).pathname))
-  );
-  let asset;
-  const encodingHeader = String(
-    getRequestHeader(event, "accept-encoding") || ""
-  );
-  const encodings = [
-    ...encodingHeader.split(",").map((e) => EncodingMap[e.trim()]).filter(Boolean).sort(),
-    ""
-  ];
-  if (encodings.length > 1) {
-    appendResponseHeader(event, "Vary", "Accept-Encoding");
-  }
-  for (const encoding of encodings) {
-    for (const _id of [id + encoding, joinURL(id, "index.html" + encoding)]) {
-      const _asset = getAsset(_id);
-      if (_asset) {
-        asset = _asset;
-        id = _id;
-        break;
-      }
-    }
-  }
-  if (!asset) {
-    if (isPublicAssetURL(id)) {
-      removeResponseHeader(event, "Cache-Control");
-      throw createError({
-        statusMessage: "Cannot find static asset " + id,
-        statusCode: 404
-      });
-    }
-    return;
-  }
-  const ifNotMatch = getRequestHeader(event, "if-none-match") === asset.etag;
-  if (ifNotMatch) {
-    setResponseStatus(event, 304, "Not Modified");
-    return "";
-  }
-  const ifModifiedSinceH = getRequestHeader(event, "if-modified-since");
-  const mtimeDate = new Date(asset.mtime);
-  if (ifModifiedSinceH && asset.mtime && new Date(ifModifiedSinceH) >= mtimeDate) {
-    setResponseStatus(event, 304, "Not Modified");
-    return "";
-  }
-  if (asset.type && !getResponseHeader(event, "Content-Type")) {
-    setResponseHeader(event, "Content-Type", asset.type);
-  }
-  if (asset.etag && !getResponseHeader(event, "ETag")) {
-    setResponseHeader(event, "ETag", asset.etag);
-  }
-  if (asset.mtime && !getResponseHeader(event, "Last-Modified")) {
-    setResponseHeader(event, "Last-Modified", mtimeDate.toUTCString());
-  }
-  if (asset.encoding && !getResponseHeader(event, "Content-Encoding")) {
-    setResponseHeader(event, "Content-Encoding", asset.encoding);
-  }
-  if (asset.size > 0 && !getResponseHeader(event, "Content-Length")) {
-    setResponseHeader(event, "Content-Length", asset.size);
-  }
-  return readAsset(id);
-});
 
 const inlineAppConfig = {
   "nuxt": {},
@@ -504,7 +410,7 @@ function _expandFromEnv(value) {
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
-    "buildId": "a24f0a70-8f05-4d22-8d8c-78cb2f95aae7",
+    "buildId": "2991c812-d338-4f9c-91b6-24773f118880",
     "buildAssetsDir": "/_nuxt/",
     "cdnURL": ""
   },
@@ -532,7 +438,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "baseUrl": "http://localhost:3000",
+    "baseUrl": "http://localhost:3010",
     "mdc": {
       "components": {
         "prose": true,
@@ -577,7 +483,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1747615762698,
+      "integrity": 1747681589415,
       "experimental": {
         "stripQueryParameters": false,
         "advanceQuery": false,
@@ -765,7 +671,7 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"server","dir":"C:/Users/TechSkillHub/Projetos/tsh.principalSite/server/assets"}];
+const serverAssets = [{"baseName":"public","dir":"C:/Users/TechSkillHub/Projetos/tsh.principalSite/server/public"},{"baseName":"server","dir":"C:/Users/TechSkillHub/Projetos/tsh.principalSite/server/assets"}];
 
 const assets = createStorage();
 
@@ -2231,7 +2137,6 @@ const _lazy_p98Iyv = () => import('../routes/api/teste/applicationOn.mjs');
 const _lazy_R7X65h = () => import('./renderer.mjs');
 
 const handlers = [
-  { route: '', handler: _BYnqD9, lazy: false, middleware: true, method: undefined },
   { route: '/api/ads/google/callback', handler: _lazy_uPmx23, lazy: true, middleware: false, method: undefined },
   { route: '/api/ads/google/campaigns', handler: _lazy_rtd8FK, lazy: true, middleware: false, method: undefined },
   { route: '/api/ads/google/connect', handler: _lazy_UmsApN, lazy: true, middleware: false, method: undefined },
@@ -2253,7 +2158,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _p1aVzj, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1747615762698.json', handler: _qm6JML, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1747681589415.json', handler: _qm6JML, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _jdYfvC, lazy: false, middleware: false, method: "get" },

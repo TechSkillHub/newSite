@@ -18,10 +18,9 @@ import 'mailersend';
 import 'jsonwebtoken';
 import 'node:http';
 import 'node:https';
-import 'node:fs';
-import 'node:url';
 import '@iconify/utils';
 import 'consola/core';
+import 'node:fs';
 import 'node:path';
 
 const prisma = new PrismaClient();
