@@ -1,54 +1,60 @@
-name: Deploy Nuxt3 Static 
+name: Deploy Nuxt3 Static
 
-on: 
-  push: 
-    branches: 
+on:
+  push:
+    branches:
       - develop
 
-jobs: 
-  build: 
-    runs-on: ubuntu-latest 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    steps: 
-      - name: Checkout code 
-        uses: actions/checkout@v2 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js 
-        uses: actions/setup-node@v2 
-        with: 
-          node-version: '22' 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
 
-      - name: Install dependencies 
-        run: npm install 
+      - name: Install dependencies
+        run: npm install
 
-      - name: Generate static site 
-        run: npm run generate 
-        # Corrige paths absolutos
-        run: find .output/public -type f -exec sed -i 's|="/_nuxt|="/_nuxt|g' {} \;
+      - name: Generate static site
+        run: |
+          npm run generate
+          # Corrige paths absolutos
+          find .output/public -type f -name '*.html' -exec sed -i 's|="/_nuxt|="/_nuxt|g' {} \;
 
-      - name: Upload artifact 
-        uses: actions/upload-artifact@v4 
-        with: 
-          name: nuxt-dist 
-          path: .output/public 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuxt-dist
+          path: .output/public
 
-  deploy: 
-    needs: build 
-    runs-on: ubuntu-latest 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
 
-    steps: 
-      - name: Download artifact 
-        uses: actions/download-artifact@v4 
-        with: 
-          name: nuxt-dist 
-          path: nuxt-dist 
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nuxt-dist
+          path: nuxt-dist
 
-      - name: Deploy to server 
-        uses: appleboy/scp-action@master 
-        with: 
-          host: ${{ secrets.SSH_HOST }} 
-          username: ${{ secrets.SSH_USERNAME }} 
-          key: ${{ secrets.SSH_KEY }} 
-          source: ".output/public/**" 
-          target: "/var/www/techskillhub.com/dist" 
-          strip_components: 0
+      - name: Prepare deployment
+        run: |
+          mkdir -p deployment
+          cp -r nuxt-dist/.output/public/* deployment/
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "deployment/**"
+          target: "/var/www/techskillhub.com/dist"
+          rm: true
