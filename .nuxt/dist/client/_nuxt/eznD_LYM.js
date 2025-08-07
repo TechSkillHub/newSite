@@ -1,1 +1,0 @@
-import{K as o,o as r,e as s,L as t}from"./BOD4MXft.js";const n={};function c(e,a){return r(),s("em",null,[t(e.$slots,"default")])}const f=o(n,[["render",c]]);export{f as default};

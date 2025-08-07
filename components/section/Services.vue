@@ -11,11 +11,7 @@
           <FieldButton 
             v-if="item.cta"
             fullWidth
-<<<<<<< HEAD
-            class="uppercase rounded-full py-4 mx-auto"
-=======
             class="uppercase rounded-full py-4 mx-auto md:text-xl text-lg"
->>>>>>> master
             @click="sendMsg"
           >
             <span class="w-11/12">{{ item.cta }}</span>
@@ -25,33 +21,15 @@
       </div>
     
 
-<<<<<<< HEAD
-    <div class="container mt-8">
-      <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto" @click="sendMsg">
-        <span class="w-11/12">{{ services.cta }}</span>
-=======
     <div class="container my-8">
       <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto md:text-xl text-lg" @click="sendMsg">
         <span class="w-11/12">Quero começar minha revolução</span>
->>>>>>> master
         <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
       </FieldButton>
     </div>
   </div>
 </template>
 
-<<<<<<< HEAD
-<script setup lang="ts">
-import { whatsApp } from '~/utils/datas/whatsapp.data';
-import { useContent } from '@/composables/useContent'
-
-const content = await useContent()
-const services = content.services
-
-const sendMsg = () => {
-  window.open(`${whatsApp}?text=${encodeURIComponent('Quero começar minha revolução!')}`, '_blank')
-}
-=======
 <script setup>
 import { useContentCustom } from '~/composables/useCustomContent'
 const content = await useContentCustom()
@@ -63,7 +41,6 @@ const sendMsg = () => {
   window.open(`${whatsApp}?text=${encodeURIComponent(msg.value)}`, '_blank')
 }
 
->>>>>>> master
 </script>
 
 <style>
