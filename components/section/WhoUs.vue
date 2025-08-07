@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-offWhite flex flex-col gap-4 relative py-12">
+  <div class="bg-grayTheme flex flex-col gap-4 relative py-24">
     <div class="container flex flex-col md:flex-row">
       <div class="md:w-2/3">
         <h1 class="text-4xl text-primary font-semibold mb-4">Mais sobre nós...</h1>
