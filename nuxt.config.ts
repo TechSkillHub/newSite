@@ -3,6 +3,10 @@ import viteCompression from 'vite-plugin-compression'
 
 export default defineNuxtConfig({
   ssr: false,
+  app: {
+    baseURL: '/',
+    buildAssetsDir: '/_nuxt/'
+  },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   css: [
@@ -35,7 +39,7 @@ export default defineNuxtConfig({
     composable: true
   },
   nitro: {
-    preset: 'node-server',
+    preset: 'static',
     port: 3010,  // Para produção (modo start)
     serveStatic: false,
     serverAssets: [
