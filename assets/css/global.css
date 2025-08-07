@@ -13,13 +13,17 @@
   font-display: swap;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: var(--color-darkTheme)
 }
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto px-4;
+    @apply max-w-screen-xl mx-auto px-4;
   }
 
   .btn {

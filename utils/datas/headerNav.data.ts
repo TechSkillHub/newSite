@@ -1,18 +1,22 @@
 export const headerNav = [
   {
-    title: 'Desenvolvimento',
+    title: 'Home',
     link: '/'
   },
   {
-    title: 'Tráfego pago',
-    link: '/'
+    title: 'Soluções',
+    link: '/#solucoes'
   },
   {
-    title: 'UX/UI',
-    link: '/'
+    title: 'Serviços',
+    link: '/#servicos'
   },
   {
-    title: 'Marketing digital',
-    link: '/'
+    title: 'Sobre nós',
+    link: '/#sobre-nos'
   },
+  // {
+  //   title: 'Marketing digital',
+  //   link: '/'
+  // },
 ]

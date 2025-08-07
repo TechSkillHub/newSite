@@ -21,7 +21,7 @@
         fullWidth
         type="submit"
       >
-        Reset password
+        Redefinir senha
       </FieldButton>
     </Form>
 

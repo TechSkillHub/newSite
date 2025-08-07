@@ -1,4 +1,5 @@
 <template>
+  <!-- <ElementsSteps/> -->
   <div class="bg-darkTheme flex items-center min-h-[calc(100vh-var(--height-header))] py-8">
     <div class="container flex justify-between items-center md:h-[480px] flex-col md:flex-row gap-8">
       <div class="md:w-1/2 h-full">
@@ -23,7 +24,11 @@
             <span class="mt-[2px]">{{ item }}</span>
           </div>
           
+<<<<<<< HEAD
           <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4" @click="sendMsg">
+=======
+          <FieldButton class="uppercase md:w-2/3 mt-4 rounded-full py-4 md:text-xl text-lg" @click="sendMsg">
+>>>>>>> master
             <span class="w-11/12">{{ hero.cta }}</span>
             <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
           </FieldButton>
@@ -33,6 +38,7 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <script setup lang="ts">
 import { whatsApp } from '~/utils/datas/whatsapp.data'
 import { useContent } from '@/composables/useContent'
@@ -42,6 +48,17 @@ const hero = content.hero
 
 const sendMsg = () => {
   window.open(`${whatsApp}?text=${encodeURIComponent('Quero explorar a mudança digital!')}`, '_blank')
+=======
+<script setup>
+import { useContentCustom } from '~/composables/useCustomContent'
+const content = await useContentCustom()
+const hero = content.hero
+
+import { whatsApp } from '~/utils/datas/whatsapp.data'
+const msg = ref('Olá, quero explorar a mudança no digital.')
+const sendMsg = () => {
+  window.open(`${whatsApp}?text=${encodeURIComponent(msg.value)}`, '_blank')
+>>>>>>> master
 }
 
 </script>

@@ -7,8 +7,13 @@
     
     <EffectsScrollX :line1="problems.line1" :line2="problems.line2"/>
 
+<<<<<<< HEAD
     <div class="container mt-8">
       <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto" @click="sendMsg">
+=======
+    <div class="container my-8">
+      <FieldButton class="uppercase md:w-2/3 rounded-full py-4 mx-auto md:text-xl text-lg" @click="sendMsg">
+>>>>>>> master
         <span class="w-11/12">{{ problems.cta }}</span>
         <Icon name="material-symbols:arrow-insert" class="-scale-x-100 text-3xl" />
       </FieldButton>
@@ -16,6 +21,7 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <script setup lang="ts">
 import { whatsApp } from '~/utils/datas/whatsapp.data'
 import { useContent } from '@/composables/useContent'
@@ -26,6 +32,19 @@ const problems = content.problems
 const sendMsg = () => {
   window.open(`${whatsApp}?text=${encodeURIComponent('Como resolver esses problemas?')}`, '_blank')
 }
+=======
+<script setup>
+import { useContentCustom } from '~/composables/useCustomContent'
+const content = await useContentCustom()
+const problems = content.problems
+
+import { whatsApp } from '~/utils/datas/whatsapp.data'
+const msg = ref('Olá, quero saber como resolver meus problemas digitais.')
+const sendMsg = () => {
+  window.open(`${whatsApp}?text=${encodeURIComponent(msg.value)}`, '_blank')
+}
+
+>>>>>>> master
 </script>
 
 <style scoped>

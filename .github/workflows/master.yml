@@ -1,0 +1,86 @@
+name: Deploy Nuxt3
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            DEPLOY_DIR="/var/www/techskillhub.com"
+            PORT=3010  # Porta exclusiva para homologação
+            
+            # Configuração do diretório
+            mkdir -p $DEPLOY_DIR
+            cd $DEPLOY_DIR
+
+            git clone --branch master git@github.com:TechSkillHub/newSite.git . || {
+              git fetch origin master
+              git reset --hard origin/master
+            }
+
+            # Carrega o NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # Verifica se o NVM está instalado
+            if ! command -v nvm &> /dev/null; then
+              echo "Instalando NVM..."
+              curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+              export NVM_DIR="$HOME/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            fi
+
+            # Usa a versão do Node.js especificada no .nvmrc
+            if [ -f .nvmrc ]; then
+              echo "Usando a versão do Node.js especificada no .nvmrc..."
+              nvm use
+            else
+              echo "Usando a versão padrão do Node.js..."
+              nvm install --lts
+            fi
+
+            # Verifica se o PM2 está instalado
+            if ! command -v pm2 &> /dev/null; then
+              echo "Instalando PM2..."
+              npm install -g pm2
+            fi
+
+            # Instala dependências, builda o projeto e reinicia o PM2
+            echo "Instalando dependências..."
+            npm install
+
+            echo "Buildando o projeto..."
+            NODE_OPTIONS=--max-old-space-size=2048 npm run build
+
+            echo "Reiniciando o PM2..."
+            pm2 restart techskillhub.com || pm2 start npm --name "techskillhub.com" -- run preview -- --port $PORT

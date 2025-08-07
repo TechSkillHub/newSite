@@ -2,7 +2,7 @@
 import viteCompression from 'vite-plugin-compression'
 
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   css: [
@@ -20,11 +20,33 @@ export default defineNuxtConfig({
     }
   },
   vite: {
+    port: 3010,
     plugins: [
       viteCompression({
-        algorithm: 'brotliCompress', // Usa Brotli (melhor compressão)
-        threshold: 1024,            // Comprime arquivos maiores que 1 KB
+        algorithm: 'brotliCompress',
+        // threshold: 1024,
       }),
     ],
+  },
+  vgsap: {
+    presets: [],
+    breakpoint: 768,
+    scroller: '',
+    composable: true
+  },
+  nitro: {
+    preset: 'node-server',
+    port: 3010,  // Para produção (modo start)
+    serveStatic: false,
+    serverAssets: [
+      {
+        baseName: 'public',
+        dir: './public'
+      }
+    ]
+  },
+  devServer: {
+    port: 4000,  // Para desenvolvimento (modo dev)
+    host: 'localhost'
   },
 })

@@ -10,20 +10,13 @@
           :class="{'border-b-2 border-primary bg-white ': activeTab === 'dados'}"
           @click="setActiveTab('dados')"
         >
-          Dados do contratatante
+          Usuários
         </button>
-        <button
-          class="py-2 px-4 text-gray-700 rounded-t-md bg-grayTheme"
-          :class="{'border-b-2 border-primary bg-white': activeTab === 'briefing'}"
-          @click="setActiveTab('briefing')"
-        >
-          Briefing de Identidade Visual
-        </button>
+        
       </div>
 
       <div class="p-4 bg-white rounded-md rounded-tl-none">
         <SectionFormsDados v-if="activeTab === 'dados'" />
-        <SectionFormsBriefing v-if="activeTab === 'briefing'" />
         
       </div>
     </div>
