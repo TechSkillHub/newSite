@@ -24,7 +24,7 @@ jobs:
       - name: Generate static site 
         run: npm run generate 
         # Corrige paths absolutos
-        find .output/public -type f -exec sed -i 's|="/_nuxt|="/_nuxt|g' {} \;
+        run: find .output/public -type f -exec sed -i 's|="/_nuxt|="/_nuxt|g' {} \;
 
       - name: Upload artifact 
         uses: actions/upload-artifact@v4 
