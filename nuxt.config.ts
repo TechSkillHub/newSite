@@ -2,7 +2,7 @@
 import viteCompression from 'vite-plugin-compression'
 
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   css: [

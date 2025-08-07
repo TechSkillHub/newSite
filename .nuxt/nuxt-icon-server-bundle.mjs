@@ -1,3 +1,5 @@
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
 function createRemoteCollection(fetchEndpoint) {
   let _cache
   return async () => {
@@ -10,11 +12,4 @@ function createRemoteCollection(fetchEndpoint) {
 }
 
 export const collections = {
-  'fa6-brands': () => import('@iconify-json/fa6-brands/icons.json', { with: { type: 'json' } }).then(m => m.default),
-  'fluent': () => import('@iconify-json/fluent/icons.json', { with: { type: 'json' } }).then(m => m.default),
-  'logos': () => import('@iconify-json/logos/icons.json', { with: { type: 'json' } }).then(m => m.default),
-  'material-symbols': () => import('@iconify-json/material-symbols/icons.json', { with: { type: 'json' } }).then(m => m.default),
-  'mdi': () => import('@iconify-json/mdi/icons.json', { with: { type: 'json' } }).then(m => m.default),
-  'ri': () => import('@iconify-json/ri/icons.json', { with: { type: 'json' } }).then(m => m.default),
-  'svg-spinners': () => import('@iconify-json/svg-spinners/icons.json', { with: { type: 'json' } }).then(m => m.default),
 }

@@ -1,35 +1,103 @@
-name: Deploy to cPanel
+name: Deploy Nuxt3 Static 
 
-on:
-  push:
-    branches:
+ 
+
+on: 
+
+  push: 
+
+    branches: 
+
       - develop
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+ 
 
-    strategy:
-      matrix:
-        node-version: [20.x]
+jobs: 
 
-    steps:
-      - name: Checkout Code 🚚
-        uses: actions/checkout@v3
+  build: 
 
-      - name: Install Dependencies 📦
-        run: npm install
+    runs-on: ubuntu-latest 
 
-      - name: Build React App / Vue App (depending on user app) 🏗️
-        run: npm run generate
+ 
 
-      - name: Enter dist 🏗️
-        run: cd .output/public
+    steps: 
 
-      - name: Upload to cPanel 📂
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: site-institucional/
+      - name: Checkout code 
+
+        uses: actions/checkout@v2 
+
+ 
+
+      - name: Set up Node.js 
+
+        uses: actions/setup-node@v2 
+
+        with: 
+
+          node-version: '22' 
+
+ 
+
+      - name: Install dependencies 
+
+        run: npm install 
+
+ 
+
+      - name: Generate static site 
+
+        run: npm run generate 
+
+ 
+
+      - name: Upload artifact 
+
+        uses: actions/upload-artifact@v4 
+
+        with: 
+
+          name: nuxt-dist 
+
+          path: .output/public 
+
+ 
+
+  deploy: 
+
+    needs: build 
+
+    runs-on: ubuntu-latest 
+
+ 
+
+    steps: 
+
+      - name: Download artifact 
+
+        uses: actions/download-artifact@v4 
+
+        with: 
+
+          name: nuxt-dist 
+
+          path: nuxt-dist 
+
+ 
+
+      - name: Deploy to server 
+
+        uses: appleboy/scp-action@master 
+
+        with: 
+
+          host: ${{ secrets.SSH_HOST }} 
+
+          username: ${{ secrets.SSH_USERNAME }} 
+
+          key: ${{ secrets.SSH_KEY }} 
+
+          source: "nuxt-dist/*" 
+
+          target: "/var/www/techskillhub.com/dist" 
+
+          strip_components: 1 
