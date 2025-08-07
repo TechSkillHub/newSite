@@ -24,7 +24,6 @@ jobs:
       - name: Generate static site
         run: |
           npm run generate
-          # Corrige paths absolutos
           find .output/public -type f -name '*.html' -exec sed -i 's|="/_nuxt|="/_nuxt|g' {} \;
 
       - name: Upload artifact
@@ -47,7 +46,7 @@ jobs:
       - name: Prepare deployment
         run: |
           mkdir -p deployment
-          cp -r nuxt-dist/.output/public/* deployment/
+          cp -r nuxt-dist/* deployment/
 
       - name: Deploy to server
         uses: appleboy/scp-action@master
