@@ -21,13 +21,7 @@ jobs:
         run: npm install 
 
       - name: Generate static site 
-        run: |
-          npm run generate
-          if [ $? -eq 0 ]; then
-            exit 0
-          else
-            exit 1
-          fi
+        run: NODE_ENV=production npx nuxt generate --no-serve
  
       - name: Upload artifact 
         uses: actions/upload-artifact@v4 
