@@ -7,7 +7,21 @@ export default defineNuxtConfig({
 
   // Geração de Build
   generate: {
-    routes: ['/']
+    routes: ['/'],
+    exclude: [
+      '/auth/**',
+      '/dashboard/**'
+    ]
+  },
+
+  experimental: {
+    payloadExtraction: false
+  },
+
+  hooks: {
+    'build:done': () => {
+      process.exit(0)
+    }
   },
 
   // Configuração da Aplicação
@@ -64,10 +78,18 @@ export default defineNuxtConfig({
   // Configuração do Nitro (Otimizado para Static)
   nitro: {
     preset: 'static',
-    serveStatic: true, // Importante para produção
+    static: true,
+    serveStatic: true,
     prerender: {
-      crawlLinks: true, // Melhor para SEO
-      routes: ['/']
+      crawlLinks: false,
+      routes: ['/'],
+      ignore: [
+        '/auth/**',
+        '/dashboard/**'
+      ]
+    },
+    commands: {
+      preview: 'npx serve .output/public'
     }
   },
 
