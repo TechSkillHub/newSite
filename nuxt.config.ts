@@ -2,117 +2,55 @@
 import viteCompression from 'vite-plugin-compression'
 
 export default defineNuxtConfig({
-  // Configuração de Renderização
   ssr: true,
-
-  // Geração de Build
-  generate: {
-    routes: ['/'],
-    exclude: [
-      '/auth/**',
-      '/dashboard/**'
-    ]
-  },
-
-  experimental: {
-    payloadExtraction: false
-  },
-
-  hooks: {
-    'build:done': () => {
-      process.exit(0)
-    }
-  },
-
-  // Configuração da Aplicação
   app: {
     baseURL: '/',
-    buildAssetsDir: '/_nuxt/', // Garante caminhos consistentes
-    head: {
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-      htmlAttrs: {
-        lang: 'pt-BR'
-      }
-    }
+    buildAssetsDir: '/_nuxt/'
   },
-
-  // Módulos
+  compatibilityDate: '2024-04-03',
+  devtools: { enabled: false },
+  css: [
+    '~/assets/css/global.css'
+  ],
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@nuxt/icon',
     '@nuxt/content',
   ],
-
-  // CSS Global
-  css: [
-    '@/assets/css/global.css',
-    '@/assets/css/loading.css',
-    '@/assets/css/modal.css',
-    '@/assets/css/tooltip.css'
-  ],
-
-  // Configuração de Runtime
   runtimeConfig: {
     public: {
-      baseUrl: process.env.BASE_URL || 'https://techskillhub.com' // Fallback seguro
+      baseUrl: process.env.BASE_URL,
     }
   },
-
-  // Configuração do Vite
   vite: {
+    port: 3010,
     plugins: [
       viteCompression({
         algorithm: 'brotliCompress',
-        threshold: 1024, // Recomendado habilitar
-        ext: '.br'
+        // threshold: 1024,
       }),
     ],
-    build: {
-      chunkSizeWarningLimit: 2000, // Aumenta limite de warnings
-      cssCodeSplit: true // Otimiza CSS
-    }
   },
-
-  // Configuração do Nitro (Otimizado para Static)
+  vgsap: {
+    presets: [],
+    breakpoint: 768,
+    scroller: '',
+    composable: true
+  },
   nitro: {
     preset: 'static',
-    static: true,
-    serveStatic: true,
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      ignore: [
-        '/auth/**',
-        '/dashboard/**'
-      ]
-    },
-    commands: {
-      preview: 'npx serve .output/public'
-    }
+    port: 3010,  // Para produção (modo start)
+    serveStatic: false,
+    serverAssets: [
+      {
+        baseName: 'public',
+        dir: './public'
+      }
+    ]
   },
-
-  // Configurações de Desenvolvimento
   devServer: {
-    port: 4000,
+    port: 4000,  // Para desenvolvimento (modo dev)
     host: 'localhost'
   },
-
-  // Features Extras
-  features: {
-    inlineStyles: false // Melhor para performance
-  },
-
-  // Configurações de Build
-  build: {
-    transpile: [], // Adicione pacotes que precisam ser transpilados
-    analyze: false // Habilite se quiser analisar o bundle
-  },
-
-  // Debugging
-  debug: process.env.NODE_ENV === 'development',
-
-  sourcemap: process.env.NODE_ENV !== 'production',
-  compatibilityDate: '2025-08-08'
 })
