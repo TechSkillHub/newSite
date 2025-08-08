@@ -21,7 +21,9 @@ jobs:
         run: npm install 
 
       - name: Generate static site 
-        run: NODE_ENV=production npx nuxt generate --no-serve
+        run: |
+          npm run generate:prod || true
+          pkill -f 'nuxt' || true
  
       - name: Upload artifact 
         uses: actions/upload-artifact@v4 

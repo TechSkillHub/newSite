@@ -5,7 +5,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port 4000",
-    "generate": "nuxt generate --no-serve",
+    "generate": "nuxt generate",
+    "generate:prod": "nuxt generate && pkill -f 'nuxt'",
     "preview": "nuxt preview --port 3010",
     "postinstall": "nuxt prepare",
     "start": "PORT=3010 node .output/server/index.mjs"
