@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     baseURL: '/',
-    buildAssetsDir: '/_nuxt/'
   },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
