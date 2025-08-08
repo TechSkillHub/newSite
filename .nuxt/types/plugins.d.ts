@@ -18,8 +18,10 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@pinia/nuxt/dist/runtime/plugin.vue3.js")> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/prefetch.client.js")> &
   InjectionType<typeof import("../../node_modules/@nuxt/icon/dist/runtime/plugin.js")> &
+  InjectionType<typeof import("../../plugins/css")> &
   InjectionType<typeof import("../../plugins/persistedstate.client")> &
-  InjectionType<typeof import("../../plugins/vee-validate.client")>
+  InjectionType<typeof import("../../plugins/vee-validate.client")> &
+  InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/plugins/prerender.server.js")>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }

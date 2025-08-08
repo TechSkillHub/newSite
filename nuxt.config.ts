@@ -3,22 +3,11 @@ import viteCompression from 'vite-plugin-compression'
 
 export default defineNuxtConfig({
   // Configuração de Renderização
-  ssr: false,
-  target: 'static',
-  
+  ssr: true,
+
   // Geração de Build
   generate: {
-    fallback: '404.html',
-    routes: ['/'] // Garante que a rota principal será gerada
-  },
-
-  // Configuração de Roteamento
-  router: {
-    base: '/',
-    trailingSlash: true,
-    options: {
-      strict: false // Mais tolerante com URLs
-    }
+    routes: ['/']
   },
 
   // Configuração da Aplicação
@@ -40,6 +29,14 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/icon',
     '@nuxt/content',
+  ],
+
+  // CSS Global
+  css: [
+    '@/assets/css/global.css',
+    '@/assets/css/loading.css',
+    '@/assets/css/modal.css',
+    '@/assets/css/tooltip.css'
   ],
 
   // Configuração de Runtime
@@ -71,9 +68,6 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true, // Melhor para SEO
       routes: ['/']
-    },
-    static: {
-      dir: 'public' // Diretório de assets estáticos
     }
   },
 
@@ -96,5 +90,7 @@ export default defineNuxtConfig({
 
   // Debugging
   debug: process.env.NODE_ENV === 'development',
-  sourcemap: process.env.NODE_ENV !== 'production'
+
+  sourcemap: process.env.NODE_ENV !== 'production',
+  compatibilityDate: '2025-08-08'
 })
