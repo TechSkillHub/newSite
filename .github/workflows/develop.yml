@@ -49,5 +49,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} 
           key: ${{ secrets.SSH_KEY }} 
           source: "nuxt-dist/*" 
-          target: "/var/www/techskillhub.com/dist" 
+          target: "/var/www/tshdevelop.com/dist" 
           strip_components: 1 

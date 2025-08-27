@@ -62,14 +62,14 @@ export default defineNuxtConfig({
     documentDriven: false
   },
 
-  hooks: {
-    // Hook AGGRESSIVO para garantir geração
-    'nitro:build:before': (nitro) => {
-      nitro.options.prerender.routes.push(
-        '/_content/hero',
-        // '/_content/problems',
-        // '/_content/services'
-      )
-    }
-  }
+  // hooks: {
+  //   // Hook AGGRESSIVO para garantir geração
+  //   'nitro:build:before': (nitro) => {
+  //     nitro.options.prerender.routes.push(
+  //       '/_content/hero',
+  //       // '/_content/problems',
+  //       // '/_content/services'
+  //     )
+  //   }
+  // }
 })
