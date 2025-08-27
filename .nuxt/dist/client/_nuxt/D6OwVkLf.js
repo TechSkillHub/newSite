@@ -1,0 +1,1 @@
+import{d as t,o as s,e as o,k as n}from"./QteOOSwe.js";const a={class:"bg-secondaryLight flex items-center justify-center h-[2000px]"},i=t({__name:"index",setup(r){return(c,e)=>(s(),o("div",a,e[0]||(e[0]=[n("h1",{class:"text-4xl font-bold"},"HOME ADMIN",-1)])))}});export{i as default};
