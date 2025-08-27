@@ -5,7 +5,7 @@
       <div class="md:w-1/2 h-full">
         <h1 class="md:text-8xl text-5xl text-center md:text-left font-bold uppercase text-white">
           Sua<br/>
-          <EffectsWriter :array="['Revolução', 'Presença', 'Solução']" caret="cursor"/>
+          <EffectsWriter :array="['Revolução', 'Presença', 'Solução']" caret="cursor" class=""/>
           Digital<br/>
           Começa<br/>
           Aqui<span class="text-primary">.</span>

@@ -4,8 +4,8 @@
     <SectionProblemCases id="solucoes"/>
     <SectionServices id="servicos"/>
     <!-- <SectionPrices/> -->
-    <SectionWhoUs id="sobre-nos"/>
     <SectionExpertises/>
+    <SectionWhoUs id="sobre-nos"/>
   </div>
 </template>
 

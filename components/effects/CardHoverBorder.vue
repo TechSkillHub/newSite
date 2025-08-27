@@ -37,7 +37,7 @@ onMounted(() => {
 
 <style scoped>
 .wrapper {
-  @apply relative z-10 rounded-xl overflow-hidden p-[4px] transition-colors duration-300 min-h-80 md:w-1/4;
+  @apply relative z-10 rounded-xl overflow-hidden p-[4px] transition-colors duration-300 md:w-1/4;
 }
 .wrapper:before {
   background: radial-gradient(

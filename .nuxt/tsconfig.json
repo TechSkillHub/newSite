@@ -78,6 +78,30 @@
       ],
       "vue-demi": [
         "../node_modules/nuxt/dist/app/compat/vue-demi"
+<<<<<<< HEAD
+=======
+      ],
+      "#mdc-configs": [
+        "./mdc-configs"
+      ],
+      "#mdc-highlighter": [
+        "./mdc-highlighter"
+      ],
+      "#mdc-imports": [
+        "./mdc-imports"
+      ],
+      "#vue-router": [
+        "../node_modules/vue-router"
+      ],
+      "#imports": [
+        "./imports"
+      ],
+      "#app-manifest": [
+        "./manifest/meta/dev.json"
+      ],
+      "#components": [
+        "./components"
+>>>>>>> develop
       ]
     },
     "moduleResolution": "Bundler",

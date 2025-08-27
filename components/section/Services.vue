@@ -2,9 +2,9 @@
   <div class="bg-darkTheme flex flex-col gap-4 relative py-12">
     
       <div class="container gap-4 flex flex-wrap">
-        <EffectsCardHoverBorder v-for="(item, index) in services" :key="index">
+        <EffectsCardHoverBorder v-for="(item, index) in services.items" :key="index">
           <div>
-            <h1 class="text-4xl text-offWhite font-semibold mb-4">{{ item.title }}</h1>
+            <h1 class="md:text-3xl text-2xl text-offWhite font-semibold mb-4 uppercase">{{ item.title }}</h1>
             <p class="text-grayTheme uppercase">{{ item.description }}</p>
           </div>
           <img v-if="item.img" :src="item.img" :alt="`Imagem ${item.title}`">
@@ -48,5 +48,6 @@ const sendMsg = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem
 }
 </style>

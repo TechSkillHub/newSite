@@ -27,10 +27,13 @@ problems: {
   cta: 'Quer saber como resolver esses problemas'
 }
 
-services: [
-  { title: 'SEO', description: 'Seu site mais rapido, e no topo das pesquisas do google, esteja na frente de seus concorrentes.', img: 'images/services/imgSeo.png', cta: ''},
-  { title: 'Marketing digital', description: 'já teve dificuldade em entender o público do seu negócio, saber como se posicionar nas redes sociais, saber como estruturas suas campanhas ou entender suas métrica.', img: '', cta: 'Saiba mais'},
-  { title: 'UX/UI', description: 'Faça que seus clientes e colabores se sintam mais envolvidos com seus sonhos e ideais.', img: 'images/services/imgUx.png', cta: ''},
-  { title: 'Densenvolvimento', description: 'Te ajudamos a Ter um site profissional feito por especialistas. tire do papel sua ideias de software que mudaram o rumo do seu négocio.', img: 'images/services/imgDev.png', cta: ''},
-  { title: 'Trafego Pago', description: 'Apresente seus serviços para mais pessoas todos os dias, utlizando o melhor que o google ads e facebook ads pode te oferecer.', img: 'images/services/imgAds.png', cta: ''},
-]
+services: {
+  items: [
+    { title: 'SEO', description: 'Seu site mais rapido, e no topo das pesquisas do google, esteja na frente de seus concorrentes.', img: 'images/services/imgSeo.png', cta: ''},
+    { title: 'Marketing digital', description: 'já teve dificuldade em entender o público do seu negócio, saber como se posicionar nas redes sociais, saber como estruturas suas campanhas ou entender suas métrica.', img: '', cta: 'Saiba mais'},
+    { title: 'UX/UI', description: 'Faça que seus clientes e colabores se sintam mais envolvidos com seus sonhos e ideais.', img: 'images/services/imgUx.png', cta: ''},
+    { title: 'Densenvolvimento', description: 'Te ajudamos a Ter um site profissional feito por especialistas. tire do papel sua ideias de software que mudaram o rumo do seu négocio.', img: 'images/services/imgDev.png', cta: ''},
+    { title: 'Trafego Pago', description: 'Apresente seus serviços para mais pessoas todos os dias, utlizando o melhor que o google ads e facebook ads pode te oferecer.', img: 'images/services/imgAds.png', cta: ''},
+  ],
+  cta: 'Quero comerçar minha revolução'
+}

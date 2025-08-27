@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-darkTheme flex flex-col gap-4 relative">
+  <div class="bg-darkTheme flex flex-col gap-4 relative py-12">
     <div class="container flex flex-col md:flex-row justify-between md:items-center mb-8 text-center my-8">
       <h1 class="md:text-4xl text-3xl text-offWhite font-bold uppercase">{{ problems.title }}</h1>
       <h2 class="md:text-xl text-primary font-semibold uppercase">{{ problems.subtitle }}</h2>
