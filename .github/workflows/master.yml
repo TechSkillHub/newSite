@@ -3,7 +3,7 @@ name: Deploy Nuxt3 Static
 on: 
   push: 
     branches: 
-      - develop
+      - master
 
 jobs: 
   build: 
